@@ -1,0 +1,17 @@
+[
+    {
+        "id": "q001",
+        "question": "Quais métodos são utilizados para reconhecimento de emoções?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q002",
+        "question": "O que é reconhecimento de emoções por meio de expressões faciais?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q003",
+        "question": "Quais sinais fisiológicos podem ser utilizados no reconhecimento de emoções?",
+        "relevant_chunks": []
+    }
+]
