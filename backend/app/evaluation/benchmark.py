@@ -36,6 +36,11 @@ def run_benchmark(top_k: int = 3):
 
     vector_store = VectorStore()
 
+    print(
+        f"\nDocumentos no ChromaDB: "
+        f"{vector_store.collection.count()}"
+    )
+
     retriever = Retriever(
         vector_store
     )
@@ -48,19 +53,67 @@ def run_benchmark(top_k: int = 3):
 
         question = item["question"]
 
-        relevant_chunks = set(
-            item["relevant_chunks"]
-        )
+        print("\n" + "=" * 70)
+        print(f"PERGUNTA: {question}")
+        print("=" * 70)
 
         search_results = retriever.search(
             query=question,
             top_k=top_k
         )
 
+        # ------------------------------------------
+        # Verificar resultados da busca
+        # ------------------------------------------
+
+        metadatas = search_results.get(
+            "metadatas",
+            [[]]
+        )[0]
+
+        distances = search_results.get(
+            "distances",
+            [[]]
+        )[0]
+
+        print(
+            f"Resultados encontrados: "
+            f"{len(metadatas)}"
+        )
+
+        # ------------------------------------------
+        # Extrair chunks
+        # ------------------------------------------
+
         retrieved_chunks = [
             metadata["chunk_index"]
-            for metadata in search_results["metadatas"][0]
+            for metadata in metadatas
         ]
+
+        print(
+            f"Chunks recuperados: "
+            f"{retrieved_chunks}"
+        )
+
+        # ------------------------------------------
+        # Ground truth
+        # ------------------------------------------
+
+        relevant_chunks = set(
+            item.get(
+                "relevant_chunks",
+                []
+            )
+        )
+
+        print(
+            f"Chunks relevantes: "
+            f"{sorted(relevant_chunks)}"
+        )
+
+        # ------------------------------------------
+        # Métricas
+        # ------------------------------------------
 
         precision = precision_at_k(
             retrieved_chunks,
@@ -79,16 +132,48 @@ def run_benchmark(top_k: int = 3):
             relevant_chunks
         )
 
+        print(
+            f"Precision@{top_k}: "
+            f"{precision:.3f}"
+        )
+
+        print(
+            f"Recall@{top_k}: "
+            f"{recall:.3f}"
+        )
+
+        print(
+            f"MRR: "
+            f"{mrr:.3f}"
+        )
+
+        # ------------------------------------------
+        # Salvar resultado
+        # ------------------------------------------
+
         results.append({
+
             "id": item["id"],
+
             "question": question,
-            "retrieved_chunks": retrieved_chunks,
-            "relevant_chunks": list(
-                relevant_chunks
-            ),
-            "precision_at_k": precision,
-            "recall_at_k": recall,
-            "mrr": mrr
+
+            "retrieved_chunks":
+                retrieved_chunks,
+
+            "distances":
+                distances,
+
+            "relevant_chunks":
+                list(relevant_chunks),
+
+            "precision_at_k":
+                precision,
+
+            "recall_at_k":
+                recall,
+
+            "mrr":
+                mrr
         })
 
     return results
@@ -100,39 +185,12 @@ if __name__ == "__main__":
         top_k=3
     )
 
-    print("\n" + "=" * 70)
-    print("BENCHMARK DO RETRIEVER")
+    print("\n")
+    print("=" * 70)
+    print("BENCHMARK FINALIZADO")
     print("=" * 70)
 
-    for result in results:
-
-        print("\n" + "-" * 70)
-
-        print(
-            f"Pergunta: {result['question']}"
-        )
-
-        print(
-            f"Chunks recuperados: "
-            f"{result['retrieved_chunks']}"
-        )
-
-        print(
-            f"Chunks relevantes: "
-            f"{result['relevant_chunks']}"
-        )
-
-        print(
-            f"Precision@3: "
-            f"{result['precision_at_k']:.3f}"
-        )
-
-        print(
-            f"Recall@3: "
-            f"{result['recall_at_k']:.3f}"
-        )
-
-        print(
-            f"MRR: "
-            f"{result['mrr']:.3f}"
-        )
+    print(
+        f"\nTotal de perguntas: "
+        f"{len(results)}"
+    )
