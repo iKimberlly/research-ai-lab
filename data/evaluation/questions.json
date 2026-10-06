@@ -2,16 +2,51 @@
     {
         "id": "q001",
         "question": "Quais métodos são utilizados para reconhecimento de emoções?",
-        "relevant_chunks": []
+        "relevant_chunks": [7, 6]
     },
     {
         "id": "q002",
         "question": "O que é reconhecimento de emoções por meio de expressões faciais?",
-        "relevant_chunks": []
+        "relevant_chunks": [7, 8]
     },
     {
         "id": "q003",
         "question": "Quais sinais fisiológicos podem ser utilizados no reconhecimento de emoções?",
+        "relevant_chunks": [6, 7, 8]
+    },
+    {
+        "id": "q004",
+        "question": "O que é Computação Afetiva?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q005",
+        "question": "Qual é a importância do reconhecimento de emoções na área da saúde?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q006",
+        "question": "Qual é a proposta de aplicação apresentada no trabalho?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q007",
+        "question": "Como o reconhecimento de emoções pode auxiliar terapeutas?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q008",
+        "question": "Qual é a relação entre reconhecimento de emoções e terapias personalizadas?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q009",
+        "question": "Quais dados podem ser utilizados por um sistema para reconhecer emoções automaticamente?",
+        "relevant_chunks": []
+    },
+    {
+        "id": "q010",
+        "question": "Qual é o objetivo do desenvolvimento do sistema de reconhecimento de emoções apresentado no trabalho?",
         "relevant_chunks": []
     }
 ]

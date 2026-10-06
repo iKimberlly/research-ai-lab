@@ -1,0 +1,4 @@
+id,question,top_k,retrieved_chunks,relevant_chunks,distances,precision_at_k,recall_at_k,mrr
+q001,Quais métodos são utilizados para reconhecimento de emoções?,3,"[7, 6, 14]","[14, 6, 7]","[0.6200647354125977, 0.707329511642456, 0.7657831907272339]",1.0,1.0,1.0
+q002,O que é reconhecimento de emoções por meio de expressões faciais?,3,"[7, 6, 8]","[8, 7]","[0.5758354663848877, 0.6866393685340881, 0.7845271825790405]",0.6666666666666666,1.0,1.0
+q003,Quais sinais fisiológicos podem ser utilizados no reconhecimento de emoções?,3,"[7, 8, 6]","[8, 6, 7]","[0.8330168724060059, 0.8589437007904053, 0.9539288282394409]",1.0,1.0,1.0

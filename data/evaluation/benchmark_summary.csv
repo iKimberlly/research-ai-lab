@@ -1,0 +1,4 @@
+metric,mean
+Precision@K,0.8888888888888888
+Recall@K,1.0
+MRR,1.0

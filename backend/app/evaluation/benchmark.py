@@ -1,3 +1,4 @@
+import csv
 import json
 from pathlib import Path
 
@@ -11,6 +12,10 @@ from app.evaluation.metrics import (
 )
 
 
+# ============================================================
+# DIRETÓRIOS
+# ============================================================
+
 BASE_DIR = Path(__file__).resolve().parents[3]
 
 QUESTIONS_PATH = (
@@ -20,6 +25,21 @@ QUESTIONS_PATH = (
     / "questions.json"
 )
 
+RESULTS_DIR = (
+    BASE_DIR
+    / "data"
+    / "evaluation"
+)
+
+RESULTS_PATH = (
+    RESULTS_DIR
+    / "benchmark_results.csv"
+)
+
+
+# ============================================================
+# CARREGAR PERGUNTAS
+# ============================================================
 
 def load_questions():
 
@@ -31,6 +51,75 @@ def load_questions():
 
         return json.load(file)
 
+
+# ============================================================
+# SALVAR CSV
+# ============================================================
+
+def save_results_csv(results):
+
+    RESULTS_DIR.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    fieldnames = [
+        "id",
+        "question",
+        "top_k",
+        "retrieved_chunks",
+        "relevant_chunks",
+        "distances",
+        "precision_at_k",
+        "recall_at_k",
+        "mrr"
+    ]
+
+    with open(
+        RESULTS_PATH,
+        "w",
+        newline="",
+        encoding="utf-8"
+    ) as file:
+
+        writer = csv.DictWriter(
+            file,
+            fieldnames=fieldnames
+        )
+
+        writer.writeheader()
+
+        for result in results:
+
+            writer.writerow({
+                "id": result["id"],
+                "question": result["question"],
+                "top_k": result["top_k"],
+                "retrieved_chunks": str(
+                    result["retrieved_chunks"]
+                ),
+                "relevant_chunks": str(
+                    result["relevant_chunks"]
+                ),
+                "distances": str(
+                    result["distances"]
+                ),
+                "precision_at_k":
+                    result["precision_at_k"],
+                "recall_at_k":
+                    result["recall_at_k"],
+                "mrr":
+                    result["mrr"]
+            })
+
+    print(
+        f"\nCSV salvo em:\n{RESULTS_PATH}"
+    )
+
+
+# ============================================================
+# BENCHMARK
+# ============================================================
 
 def run_benchmark(top_k: int = 3):
 
@@ -54,17 +143,15 @@ def run_benchmark(top_k: int = 3):
         question = item["question"]
 
         print("\n" + "=" * 70)
-        print(f"PERGUNTA: {question}")
+        print(
+            f"PERGUNTA: {question}"
+        )
         print("=" * 70)
 
         search_results = retriever.search(
             query=question,
             top_k=top_k
         )
-
-        # ------------------------------------------
-        # Verificar resultados da busca
-        # ------------------------------------------
 
         metadatas = search_results.get(
             "metadatas",
@@ -76,28 +163,10 @@ def run_benchmark(top_k: int = 3):
             [[]]
         )[0]
 
-        print(
-            f"Resultados encontrados: "
-            f"{len(metadatas)}"
-        )
-
-        # ------------------------------------------
-        # Extrair chunks
-        # ------------------------------------------
-
         retrieved_chunks = [
             metadata["chunk_index"]
             for metadata in metadatas
         ]
-
-        print(
-            f"Chunks recuperados: "
-            f"{retrieved_chunks}"
-        )
-
-        # ------------------------------------------
-        # Ground truth
-        # ------------------------------------------
 
         relevant_chunks = set(
             item.get(
@@ -105,15 +174,6 @@ def run_benchmark(top_k: int = 3):
                 []
             )
         )
-
-        print(
-            f"Chunks relevantes: "
-            f"{sorted(relevant_chunks)}"
-        )
-
-        # ------------------------------------------
-        # Métricas
-        # ------------------------------------------
 
         precision = precision_at_k(
             retrieved_chunks,
@@ -133,6 +193,21 @@ def run_benchmark(top_k: int = 3):
         )
 
         print(
+            f"Resultados encontrados: "
+            f"{len(metadatas)}"
+        )
+
+        print(
+            f"Chunks recuperados: "
+            f"{retrieved_chunks}"
+        )
+
+        print(
+            f"Chunks relevantes: "
+            f"{sorted(relevant_chunks)}"
+        )
+
+        print(
             f"Precision@{top_k}: "
             f"{precision:.3f}"
         )
@@ -147,15 +222,13 @@ def run_benchmark(top_k: int = 3):
             f"{mrr:.3f}"
         )
 
-        # ------------------------------------------
-        # Salvar resultado
-        # ------------------------------------------
-
         results.append({
 
             "id": item["id"],
 
             "question": question,
+
+            "top_k": top_k,
 
             "retrieved_chunks":
                 retrieved_chunks,
@@ -179,10 +252,18 @@ def run_benchmark(top_k: int = 3):
     return results
 
 
+# ============================================================
+# EXECUÇÃO
+# ============================================================
+
 if __name__ == "__main__":
 
     results = run_benchmark(
         top_k=3
+    )
+
+    save_results_csv(
+        results
     )
 
     print("\n")
