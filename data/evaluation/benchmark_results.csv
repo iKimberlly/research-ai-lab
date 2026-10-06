@@ -1,4 +1,11 @@
 id,question,top_k,retrieved_chunks,relevant_chunks,distances,precision_at_k,recall_at_k,mrr
-q001,Quais métodos são utilizados para reconhecimento de emoções?,3,"[7, 6, 14]","[14, 6, 7]","[0.6200647354125977, 0.707329511642456, 0.7657831907272339]",1.0,1.0,1.0
+q001,Quais métodos são utilizados para reconhecimento de emoções?,3,"[7, 6, 14]","[6, 7]","[0.6200647354125977, 0.707329511642456, 0.7657831907272339]",0.6666666666666666,1.0,1.0
 q002,O que é reconhecimento de emoções por meio de expressões faciais?,3,"[7, 6, 8]","[8, 7]","[0.5758354663848877, 0.6866393685340881, 0.7845271825790405]",0.6666666666666666,1.0,1.0
 q003,Quais sinais fisiológicos podem ser utilizados no reconhecimento de emoções?,3,"[7, 8, 6]","[8, 6, 7]","[0.8330168724060059, 0.8589437007904053, 0.9539288282394409]",1.0,1.0,1.0
+q004,O que é Computação Afetiva?,3,"[6, 7, 12]","[12, 6, 7]","[0.8866461515426636, 0.9540999531745911, 0.989968478679657]",1.0,1.0,1.0
+q005,Qual é a importância do reconhecimento de emoções na área da saúde?,3,"[7, 6, 8]","[8, 6, 7]","[0.8748299479484558, 0.9493672847747803, 1.0313712358474731]",1.0,1.0,1.0
+q006,Qual é a proposta de aplicação apresentada no trabalho?,3,"[14, 6, 37]","[37, 6]","[0.8702682256698608, 0.9065179228782654, 0.9163999557495117]",0.6666666666666666,1.0,0.5
+q007,Como o reconhecimento de emoções pode auxiliar terapeutas?,3,"[9, 7, 6]","[6, 7]","[0.7691943645477295, 0.8290094137191772, 0.8339177966117859]",0.6666666666666666,1.0,0.5
+q008,Qual é a relação entre reconhecimento de emoções e terapias personalizadas?,3,"[14, 8, 9]","[8, 9]","[0.5664974451065063, 0.7031556367874146, 0.7566406726837158]",0.6666666666666666,1.0,0.5
+q009,Quais dados podem ser utilizados por um sistema para reconhecer emoções automaticamente?,3,"[12, 7, 8]","[8, 7]","[0.6517059206962585, 0.7573690414428711, 0.7598062753677368]",0.6666666666666666,1.0,0.5
+q010,Qual é o objetivo do desenvolvimento do sistema de reconhecimento de emoções apresentado no trabalho?,3,"[7, 6, 14]","[14, 6, 7]","[0.7440160512924194, 0.7674134969711304, 0.7877030372619629]",1.0,1.0,1.0

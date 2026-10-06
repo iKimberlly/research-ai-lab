@@ -17,11 +17,14 @@ class RAGPipeline:
 
         self.top_k = top_k
 
-    def ask(self, question: str):
+    def ask(
+        self,
+        question: str
+    ):
 
-        # ==========================================
+        # ====================================================
         # 1. BUSCA SEMÂNTICA
-        # ==========================================
+        # ====================================================
 
         results = self.retriever.search(
             query=question,
@@ -29,101 +32,94 @@ class RAGPipeline:
         )
 
         documents = results["documents"][0]
+
         metadatas = results["metadatas"][0]
+
         distances = results["distances"][0]
 
-        # ==========================================
-        # 2. ORGANIZAR OS TRECHOS RECUPERADOS
-        # ==========================================
-
-        retrieved_chunks = []
+        # ====================================================
+        # 2. CONSTRUIR CONTEXTO
+        # ====================================================
 
         context_parts = []
 
-        for i, document in enumerate(documents):
+        sources = []
 
-            metadata = metadatas[i]
-            distance = distances[i]
+        for document, metadata, distance in zip(
+            documents,
+            metadatas,
+            distances
+        ):
 
-            source = metadata["source"]
             chunk_index = metadata["chunk_index"]
 
-            # Explicação baseada no mecanismo de recuperação
-            reason = (
-                "Trecho selecionado pela busca semântica "
-                "por apresentar proximidade com a pergunta "
-                "no espaço de embeddings."
-            )
-
-            retrieved_chunks.append({
-                "rank": i + 1,
-                "source": source,
-                "chunk_index": chunk_index,
-                "distance": round(distance, 4),
-                "content": document,
-                "reason": reason
-            })
+            source = metadata["source"]
 
             context_parts.append(
                 f"""
-[Fonte: {source}
-Chunk: {chunk_index}
-Distância: {distance:.4f}]
-
+[CHUNK {chunk_index}]
 {document}
 """
             )
 
-        context = "\n".join(context_parts)
+            sources.append({
+                "chunk": chunk_index,
+                "source": source,
+                "distance": round(
+                    float(distance),
+                    4
+                )
+            })
 
-        # ==========================================
-        # 3. PROMPT RAG
-        # ==========================================
+        context = "\n".join(
+            context_parts
+        )
+
+        # ====================================================
+        # 3. PROMPT DA LLM
+        # ====================================================
 
         prompt = f"""
 Você é um assistente acadêmico especializado
 em análise de artigos científicos.
 
-Responda à pergunta utilizando SOMENTE as
-informações presentes no contexto fornecido.
+Responda à pergunta utilizando SOMENTE
+as informações presentes no contexto fornecido.
 
 Não invente informações.
 
-Se a resposta não puder ser encontrada no
-contexto, diga claramente:
+Se a resposta não estiver presente no contexto,
+diga claramente:
 
 "A informação não foi encontrada nos documentos."
 
-Apresente a resposta de forma acadêmica,
-objetiva e clara.
+Apresente a resposta de forma:
+- acadêmica;
+- objetiva;
+- clara;
+- bem estruturada.
 
-Não utilize conhecimento externo ao contexto.
-
-====================
-CONTEXTO RECUPERADO
-====================
-
-{context}
-
-====================
-PERGUNTA
-====================
-
+Pergunta:
 {question}
+
+Contexto recuperado:
+{context}
 """
 
-        # ==========================================
-        # 4. GERAÇÃO DA RESPOSTA
-        # ==========================================
+        # ====================================================
+        # 4. GERAR RESPOSTA
+        # ====================================================
 
-        answer = self.llm.generate(prompt)
+        answer = self.llm.generate(
+            prompt
+        )
 
-        # ==========================================
-        # 5. RETORNO COMPLETO
-        # ==========================================
+        # ====================================================
+        # 5. RETORNAR RESPOSTA + FONTES
+        # ====================================================
 
         return {
             "question": question,
             "answer": answer,
-            "retrieved_chunks": retrieved_chunks
+            "sources": sources
         }

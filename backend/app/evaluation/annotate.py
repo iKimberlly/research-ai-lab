@@ -89,7 +89,24 @@ def annotate():
         "A = parar a anotação da pergunta"
     )
 
+    # ========================================================
+    # PERCORRER PERGUNTAS
+    # ========================================================
+
     for item in questions:
+
+        # ----------------------------------------------------
+        # NÃO REFAZER PERGUNTAS JÁ ANOTADAS
+        # ----------------------------------------------------
+
+        if item.get("relevant_chunks"):
+
+            print(
+                f"\n{item['id']} já possui ground truth: "
+                f"{item['relevant_chunks']}"
+            )
+
+            continue
 
         question = item["question"]
 
@@ -101,7 +118,7 @@ def annotate():
         print(question)
 
         # ----------------------------------------------------
-        # Buscar chunks
+        # BUSCAR CHUNKS
         # ----------------------------------------------------
 
         results = retriever.search(
@@ -110,13 +127,15 @@ def annotate():
         )
 
         documents = results["documents"][0]
+
         metadatas = results["metadatas"][0]
+
         distances = results["distances"][0]
 
         relevant_chunks = []
 
         # ----------------------------------------------------
-        # Mostrar chunks
+        # MOSTRAR CHUNKS
         # ----------------------------------------------------
 
         for rank, (
@@ -155,6 +174,10 @@ def annotate():
 
             print("\n" + "-" * 80)
 
+            # ------------------------------------------------
+            # DECISÃO DO USUÁRIO
+            # ------------------------------------------------
+
             while True:
 
                 answer = input(
@@ -169,6 +192,10 @@ def annotate():
                     "Digite S, N ou A."
                 )
 
+            # ------------------------------------------------
+            # SALVAR DECISÃO
+            # ------------------------------------------------
+
             if answer == "S":
 
                 relevant_chunks.append(
@@ -180,7 +207,7 @@ def annotate():
                 break
 
         # ----------------------------------------------------
-        # Atualizar ground truth
+        # ATUALIZAR GROUND TRUTH
         # ----------------------------------------------------
 
         item["relevant_chunks"] = sorted(
@@ -199,6 +226,10 @@ def annotate():
         )
 
         print("=" * 80)
+
+        # ----------------------------------------------------
+        # SALVAR
+        # ----------------------------------------------------
 
         save_questions(
             questions
