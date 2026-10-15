@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ResearchAI Lab: assistente acadêmico baseado em RAG para pesquisa científica.">
+    <title>ResearchAI Lab | Pesquisa Acadêmica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#" data-page="chat">
+            <span class="brand-icon">✳</span>
+            <span>
+                <strong>ResearchAI Lab</strong>
+                <small>Assistente de Pesquisa Acadêmica</small>
+            </span>
+        </a>
+
+        <nav class="top-nav" aria-label="Navegação principal">
+            <button class="nav-button active" data-page="chat">Chat</button>
+            <button class="nav-button" data-page="documents">Documentos</button>
+            <button class="nav-button" data-page="evaluation">Avaliação</button>
+            <button class="nav-button" data-page="about">Sobre</button>
+        </nav>
+
+        <span class="environment">AMBIENTE LOCAL</span>
+    </header>
+
+    <main class="layout">
+        <aside class="sidebar">
+            <section class="panel">
+                <p class="eyebrow">NAVEGAÇÃO</p>
+
+                <button class="side-link active" data-page="chat">
+                    <span>◉</span> Chat acadêmico
+                </button>
+                <button class="side-link" data-page="documents">
+                    <span>▤</span> Documentos
+                </button>
+                <button class="side-link" data-page="evaluation">
+                    <span>▥</span> Avaliação experimental
+                </button>
+                <button class="side-link" data-page="about">
+                    <span>ⓘ</span> Sobre o projeto
+                </button>
+            </section>
+
+            <section class="panel">
+                <p class="eyebrow">CONFIGURAÇÕES</p>
+
+                <label for="topK">Trechos recuperados (Top-K)</label>
+                <select id="topK">
+                    <option value="1">1 trecho</option>
+                    <option value="3" selected>3 trechos</option>
+                    <option value="5">5 trechos</option>
+                    <option value="10">10 trechos</option>
+                </select>
+
+                <p class="help-text">
+                    Quantidade de trechos que o sistema busca para construir
+                    o contexto da resposta.
+                </p>
+
+                <button id="clearChat" class="button-secondary">
+                    Limpar conversa
+                </button>
+            </section>
+
+            <section class="panel status-panel">
+                <p class="eyebrow">COMPONENTES</p>
+                <p><span class="status-dot"></span> API FastAPI</p>
+                <p><span class="status-dot"></span> ChromaDB</p>
+                <p><span class="status-dot"></span> Modelo Ollama</p>
+                <small>Verifique o terminal para confirmar o estado de cada serviço.</small>
+            </section>
+        </aside>
+
+        <section class="workspace">
+            <section id="page-chat" class="page active">
+                <div class="welcome">
+                    <p class="eyebrow">LABORATÓRIO DE INTELIGÊNCIA ARTIFICIAL</p>
+                    <h1>Pesquisa científica com apoio de IA.</h1>
+                    <p>
+                        Faça perguntas sobre os documentos indexados e acompanhe
+                        as evidências recuperadas para construir cada resposta.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <span class="feature-icon">⌕</span>
+                        <h3>Busca semântica</h3>
+                        <p>Recupera trechos relacionados ao significado da pergunta.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-icon">▤</span>
+                        <h3>Respostas contextualizadas</h3>
+                        <p>A LLM recebe os trechos recuperados como contexto.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <span class="feature-icon">↗</span>
+                        <h3>Rastreabilidade</h3>
+                        <p>Consulte os trechos que foram enviados ao modelo.</p>
+                    </article>
+                </div>
+
+                <div id="conversation" class="conversation" aria-live="polite">
+                    <div class="welcome-message">
+                        <span class="assistant-avatar">✳</span>
+                        <div>
+                            <strong>Olá! Sou o ResearchAI Lab.</strong>
+                            <p>
+                                Você pode perguntar sobre reconhecimento de emoções,
+                                métodos utilizados no artigo e aplicações em terapias
+                                personalizadas.
+                            </p>
+                            <button class="suggestion" data-question="Quais métodos são utilizados para reconhecimento de emoções?">
+                                Quais métodos são utilizados para reconhecimento de emoções?
+                            </button>
+                            <button class="suggestion" data-question="O que é Computação Afetiva?">
+                                O que é Computação Afetiva?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="sourcesPanel" class="panel sources-panel" hidden>
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">RASTREABILIDADE</p>
+                            <h2>Fontes recuperadas</h2>
+                        </div>
+                        <span id="sourceCount" class="pill">0 trechos</span>
+                    </div>
+                    <div id="sourcesList"></div>
+                    <p class="help-text">
+                        A distância vetorial indica proximidade no espaço de embeddings.
+                        Ela não comprova, por si só, que um trecho sustenta a resposta.
+                    </p>
+                </section>
+
+                <form id="chatForm" class="composer">
+                    <label class="sr-only" for="questionInput">Sua pergunta</label>
+                    <textarea
+                        id="questionInput"
+                        placeholder="Digite sua pergunta sobre os documentos..."
+                        rows="2"
+                        required
+                        minlength="3"
+                    ></textarea>
+                    <button id="sendButton" type="submit" class="send-button">
+                        Enviar ↗
+                    </button>
+                </form>
+                <p class="composer-note">
+                    As respostas são geradas por IA. Confira as fontes antes de utilizar
+                    informações em trabalhos acadêmicos.
+                </p>
+            </section>
+
+            <section id="page-documents" class="page" hidden>
+                <div class="welcome">
+                    <p class="eyebrow">BASE DE CONHECIMENTO</p>
+                    <h1>Documentos científicos</h1>
+                    <p>Informações do documento atualmente indexado no ambiente local.</p>
+                </div>
+
+                <article class="panel document-card">
+                    <span class="document-icon">PDF</span>
+                    <div>
+                        <h2>Reconhecimento de Emoções como ferramenta de apoio às terapias personalizadas</h2>
+                        <p>Documento científico em PDF</p>
+                        <div class="tag-list">
+                            <span class="pill">PDF</span>
+                            <span class="pill">45 chunks na última indexação registrada</span>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="notice">
+                    <strong>Importante</strong>
+                    <p>
+                        Esta tela apresenta o documento usado no desenvolvimento.
+                        A contagem de trechos é informativa e pode mudar quando a
+                        indexação for executada novamente.
+                    </p>
+                </div>
+            </section>
+
+            <section id="page-evaluation" class="page" hidden>
+                <div class="welcome">
+                    <p class="eyebrow">EXPERIMENTAÇÃO</p>
+                    <h1>Avaliação do Retriever</h1>
+                    <p>
+                        Linha de base registrada com 10 perguntas, Top-K igual a 3,
+                        chunk size de 1000 caracteres e overlap de 200.
+                    </p>
+                </div>
+
+                <div class="metric-grid">
+                    <article class="metric-card">
+                        <p>Precision@3</p>
+                        <strong>0,800</strong>
+                        <small>Precisão média registrada</small>
+                    </article>
+                    <article class="metric-card">
+                        <p>Recall@3</p>
+                        <strong>1,000</strong>
+                        <small>Revocação média registrada</small>
+                    </article>
+                    <article class="metric-card">
+                        <p>MRR</p>
+                        <strong>0,800</strong>
+                        <small>Posição do primeiro resultado relevante</small>
+                    </article>
+                </div>
+
+                <section class="panel">
+                    <h2>Como interpretar as métricas?</h2>
+                    <p><strong>Precision@K:</strong> proporção dos resultados recuperados que foram anotados como relevantes.</p>
+                    <p><strong>Recall@K:</strong> proporção dos trechos relevantes anotados que foram recuperados.</p>
+                    <p><strong>MRR:</strong> avalia a posição do primeiro resultado relevante em cada consulta.</p>
+                    <p class="help-text">
+                        Estes valores são a linha de base registrada no projeto, não
+                        uma leitura automática dos CSVs. Atualize-os após novos experimentos.
+                    </p>
+                </section>
+            </section>
+
+            <section id="page-about" class="page" hidden>
+                <div class="welcome">
+                    <p class="eyebrow">SOBRE O PROJETO</p>
+                    <h1>Uma plataforma experimental para RAG.</h1>
+                    <p>
+                        O ResearchAI Lab explora a recuperação de informação científica
+                        e a geração de respostas contextualizadas por modelos de linguagem.
+                    </p>
+                </div>
+
+                <section class="panel">
+                    <h2>Objetivos acadêmicos</h2>
+                    <ul class="concept-list">
+                        <li>Estudar a recuperação semântica de documentos.</li>
+                        <li>Inspecionar as fontes usadas para responder perguntas.</li>
+                        <li>Avaliar o Retriever com métricas de recuperação.</li>
+                        <li>Comparar configurações de chunking e Top-K.</li>
+                        <li>Investigar limitações e respostas sem evidência suficiente.</li>
+                    </ul>
+                </section>
+
+                <section class="panel">
+                    <h2>Arquitetura</h2>
+                    <div class="architecture">
+                        <span>Interface web</span><b>→</b>
+                        <span>FastAPI</span><b>→</b>
+                        <span>RAG Pipeline</span><b>→</b>
+                        <span>ChromaDB + Ollama</span>
+                    </div>
+                </section>
+            </section>
+        </section>
+
+        <aside class="rightbar">
+            <section class="panel glossary">
+                <p class="eyebrow">MINIGLOSSÁRIO</p>
+                <h2>Termos e conceitos</h2>
+
+                <details open>
+                    <summary>RAG</summary>
+                    <p>
+                        <strong>Retrieval-Augmented Generation.</strong>
+                        Abordagem que recupera informações de uma base de documentos
+                        e as fornece ao modelo de linguagem para contextualizar a resposta.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Embedding</summary>
+                    <p>
+                        Representação numérica de um texto em um vetor. Textos com
+                        significados relacionados podem ficar próximos nesse espaço vetorial.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>ChromaDB</summary>
+                    <p>
+                        Banco vetorial utilizado para armazenar documentos e embeddings
+                        e recuperar trechos semelhantes a uma consulta.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>LLM</summary>
+                    <p>
+                        <strong>Large Language Model.</strong>
+                        Modelo de linguagem que gera texto a partir de instruções e contexto.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Chunk</summary>
+                    <p>
+                        Segmento de texto extraído de um documento. A divisão em chunks
+                        permite recuperar partes específicas em vez de enviar o PDF inteiro.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Top-K</summary>
+                    <p>
+                        Número de trechos retornados pela busca. Com Top-K igual a 3,
+                        o Retriever seleciona até três resultados.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Distância vetorial</summary>
+                    <p>
+                        Medida de diferença entre vetores. Na configuração atual,
+                        valores menores indicam maior proximidade segundo a métrica usada.
+                        Isso não garante relevância factual.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Ground Truth</summary>
+                    <p>
+                        Referência anotada manualmente que identifica quais trechos
+                        são relevantes para uma pergunta e permite avaliar a recuperação.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Alucinação</summary>
+                    <p>
+                        Quando o modelo produz uma afirmação incorreta ou sem sustentação
+                        suficiente nas evidências disponíveis.
+                    </p>
+                </details>
+            </section>
+
+            <section class="panel">
+                <p class="eyebrow">NOTA METODOLÓGICA</p>
+                <h2>Respostas verificáveis</h2>
+                <p>
+                    Uma resposta fluente não é necessariamente correta. Compare as
+                    afirmações da IA com os trechos recuperados e com o documento original.
+                </p>
+            </section>
+        </aside>
+    </main>
+
+    <footer>
+        ResearchAI Lab · Projeto experimental de pesquisa acadêmica
+    </footer>
+</body>
+</html>
