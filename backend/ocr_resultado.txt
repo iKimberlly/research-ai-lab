@@ -1,0 +1,1106 @@
+[Página 1]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+~S Research Square
+
+The effects of gamification on students’ emotions
+
+Wilk Oliveira
+
+wilk.oliveira@tuni.fi
+
+Tampere University
+Pasqueline Dantas Scaico
+Tampere University
+Juho Hamari
+Tampere University
+Samuli Laato
+University of Turku
+Alexandre Jun Hayasaka
+Universidade Estadual Paulista (Unesp)
+Leonardo Tortoro Pereira
+Universidade Estadual Paulista (Unesp)
+
+Article
+Keywords:
+
+Posted Date: July 7th, 2026
+
+DOI: https://doi.org/10.21203/rs.3.rs-10119808/v1
+
+License: © @® This work is licensed under a Creative Commons Attribution 4.0 International License.
+
+Read Full License
+
+Additional Declarations: Competing interest reported. The first author is a partner at the company that
+granted the rights to use the system Eagle-edu free of charge for research purposes in this project.
+
+https://www.researchsquare.com/article/rs-10119808/v1
+
+Preprints are preliminary reports that have not undergone peer review.
+They should not be considered conclusive, used to inform clinical practice,
+or referenced by the media as validated information
+
+1/16
+
+[Página 2]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+The effects of gamification on students’ emotions
+
+Wilk Oliveira!”, Pasqueline Dantas Scaico!, Juho Hamari!, Samuli Laato?, Alexandre Jun
+Hayasaka”, and Leonardo Tortoro Pereira”
+
+'Gamification Group, Research Centre of Gameful Realities, Computing Sciences Unit, Faculty of Information
+Technology and Communication Sciences, Tampere University, Tampere, Finland
+
+2Turku School of Economics, University of Turku, Turku, Finland
+
+3Institute of Geosciences and Exact Sciences, Sao Paulo State University, Rio Claro, Brazil
+“wilk.oliveira@tuni.fi
+
+ABSTRACT
+
+Gamification is widely used in educational systems to enhance engagement and learning experiences. However, its effects on
+learners’ emotions remain underexplored. This study investigates the impact of gamification on students’ basic emotions and
+emotional transitions during interaction with a learning management system (LMS). A controlled between-subjects experiment
+was conducted with 62 university students using either a gamified or non-gamified LMS. Emotional responses were captured in
+real time through automated facial-expression recognition and analyzed by duration and frequency. Anger was the most frequent
+emotion and fear the least frequent in both conditions. Statistical analyses found no significant differences between groups in
+emotion duration or frequency. However, emotional transition analyses revealed distinct patterns: anger-to-happiness was
+the most common transition in the gamified condition, whereas disgust-to-anger predominated in the non-gamified condition.
+These findings suggest that the specific gamification design used in this study did not affect basic emotional expressions but
+may have influenced emotional dynamics during learning. The study contributes objective evidence on emotions in gamified
+learning environments and highlights the importance of examining emotional transitions beyond static emotional states.
+
+Introduction
+
+Gamification, i.e., “the design of systems, services, and activities to provide motivational benefits similar to those games
+usually create”!-2, has garnered significant interest from researchers and practitioners as a strategy for promoting positive
+behavioral change**. In learning systems, gamification has been widely adopted to enhance user engagement, motivation, and
+learning outcomes**. By incorporating gameful dynamics such as acknowledgment, storytelling, and narratives, designers
+and educators aim to create more interactive and enjoyable learning experiences, potentially fostering positive emotions and
+improving learning outcomes’,
+
+Despite the widespread adoption of gamification in learning systems and the promising results reported in various studies”,
+the link between engaging in learning with a gamified system and the learners’ emotional states has seen limited attention in
+academia!®. Past research appears to have focused more on learners’ cognitive and behavioral outcomes, and less on emotional
+outcomes!!.!2, which limits the understanding of how gamified environments affect students’ emotions!?. Understanding how
+gamification influences students’ basic emotions, ¢.g., happiness, sadness, anger, surprise, fear, and disgust'*, is crucial!5. 16, as
+emotions play a significant role in learning and motivation to learn!” '8.
+
+Addressing this gap, we investigated the effects of gamification on students’ basic emotions (i.e., happiness, sadness, anger,
+surprise, fear, and disgust) and emotional transitions, thus answering the following research questions: RQ1: Does gamification
+affect the total duration of students’ emotions during LMS interaction? RQ2: Does gamification affect the frequency of
+students’ emotions during LMS interaction? RQ3: What are the sequential relationships between students’ emotions during
+LMS interaction? These RQs compare emotional duration and frequency across gamified and non-gamified LMS versions and
+identify emotional sequences by examining which emotions precede others and how these patterns differ between conditions.
+These insights can support the design of emotionally supportive gamified learning environments.
+
+To answer these research questions, this study employed a controlled between-subjects experimental design involving 62
+university students who interacted with either a gamified or a non-gamified version of the same LMS. Participants completed
+identical learning tasks while their emotional responses were continuously monitored using automated facial-expression
+recognition software. Six basic emotions (happiness, sadness, anger, surprise, fear, and disgust) were analyzed in terms of
+duration, frequency, and transition patterns. Statistical analyses were then conducted to compare emotional experiences across
+conditions and to identify the most frequent emotional sequences during the learning process.
+
+Our findings show that anger was the most commonly observed emotion across both system versions, while fear was
+the least expressed in both. However, the analysis revealed no significant differences in emotional expressions between the
+
+https://www.researchsquare.com/article/rs-10119808/v1 2/16
+
+[Página 3]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+gamified and non-gamified groups. The results also indicate that in the experimental group, the most frequent transition
+occurred from angry to happy. In the control group, the most frequent transition occurred from disgusted to angry. These results
+contribute to learning technology and gamification research by extending existing emotion-focused studies with objective,
+automated measures of facial expressions collected during interaction with a learning management system. Furthermore, by
+examining emotional transition patterns alongside emotional frequency and duration, the study provides additional insights into
+the temporal dynamics of students” emotional experiences that are often overlooked in traditional emotion assessments.
+
+Results
+
+Descriptive analysis
+
+To initially characterize our sample and facilitate subsequent group comparisons, we calculated descriptive statistics, including
+measures of central tendency (i.e., mean) and variability/variance (VAR) and standard deviation (SD) for the students” emotions
+in both experimental (gamified) and control (non-gamified) groups. Figure 1 presents the average total time for each emotion
+besides neutral, removed to provide better visibility to the other values.
+
+= Control group = Experimental group
+
+Angry
+Contempt |
+Disgusted EE
+
+Happy
+
+Emotions
+
+Sad
+surprised
+
+Scared |"
+
+[o] 25 50 75 100 125
+
+Average total duration of expressed emotion (in seconds)
+
+Figure 1. Average total duration of expressed emotion (in seconds) for each emotion in both groups.
+
+The results indicate that, most of the time, participants displayed neutral facial expressions across both versions of the
+system. Moving forward, anger was the most frequently observed emotion in both system versions, whereas fear was the least
+expressed emotion in both versions. We observed that the control group expressed more angry and surprised emotions than the
+experimental group, which expressed more contempt, disgust, happy, sad, and scared emotions. Furthermore, anger was the
+primary emotion, followed by happiness in the experimental group and surprise in the control group.
+
+RQ1: Does gamification affect the total duration of students’ emotions during LMS interaction?
+
+The results of the inferential analysis demonstrated that there was no significant difference in the participants’ emotions
+between the groups: Neutral (t = —0.511, p = .611); Angry (U = 488.5, Z = 0.25, p = .91); Contemp (U = 457.0, Z = —0.75,
+p = .68); Disgusted (U = 433.0, Z = —1.52, p = .47); Happy (U = 419.5, Z = —1.95, p= .39); Sad (U = 417.5, Z = —2.01,
+p= .36); Surprised (U = 531.0, Z = 1.61, p= .47); and Scared (U = 449.0, Z = —1.00, p = .30). The associated effect size
+was small for both emotions: Neutral (d = .13); Angry (r = .03); Contemp (r = .10); Disgusted (r = .19); Happy (r = .25);
+Sad (r = .26); Surprised (r = .20); and Scared (r = .13). The result suggests a limited practical impact of gamification on
+emotions in the context of this study!º. Table 1 summarizes the results.
+
+In summary, our findings indicate no statistically significant differences between groups for any measured emotions.
+Associated effect sizes were also small across all emotions, suggesting a limited practical impact of the gamification intervention
+on students’ emotional experiences in this specific context. These findings contribute to the existing literature by indicating that
+the gamification design employed in this study did not produce detectable changes in basic emotions during the experimental
+session. However, the absence of statistically significant differences should not be interpreted as evidence that gamification has
+no emotional effects more generally, as other implementations, contexts, levels of exposure, or learner populations may yield
+different outcomes.
+
+215
+
+https://www.researchsquare.com/article/rs-10119808/v1 3/16
+
+[Página 4]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+Table 1. Inferential analysis (average time).
+
+Group N M s torU Z p dorr
+
+NeutralC 31 1151711 319.486
+NeutralE 31 1188844 248.105
+Angry C 31 31.758 984.500
+Angry E 31 31241 968.500
+ContempC 31 30741 953.000
+ContempE 31 32258 — 1000.000
+DisgustedC 31 29.96 929.000
+DisgustedE 31 33032  1024.000
+Happy C 31 29.532 915.500
+Happy E 31 33467 — 1037.500
+Sad C 31 29467 913.500
+Sad E 31 33.532  1039.500
+SurprisedC 31 33.129 — 1027.000
+SurprisedE 31 29870 926.000
+ScaredC 31 30483 945.000
+Scared E 31 32516 — 1008.000
+
+-OS11 - 611 13
+
+488.500 0.256 915 03
+
+457.000 -0.752 .680 10
+
+433.000 -1.520 479 .19
+
+419.500 -1.952 .391 .25
+
+417.500 -2.016 .366 .26
+
+531.000 1.616 478 2
+
+449.000 -1.008 .305 .13
+
+Key: The line highlighted in light gray shows the t-test result (the remaining
+lines show the results of the Mann-Whitney U test). N: Number of participants;
+M: Mean (for t-test) or Mean rank (for Mann-Whitney U test); S: Std. Dev. (for
+t-test) or Sum of ranks (for Mann-Whitney U test); t: t-test t; U: Mann-Whitney
+U; Z: Z score; p: p-value; d: Cohen’s d (for t-test effects size); r: r-value (for
+Mann-Whitney effect size); C: Control group; E Experimental group.
+
+RQ2: Does gamification affect the frequency of students’ emotions during LMS interaction?
+
+The results of the inferential analysis demonstrated that there was no significant difference in the frequency of participants’
+emotions between the groups: Neutral (U = 554.500, Z = 2.368, p = .301); Angry (U = 490.000, Z = 0.304, p = .899);
+Contemp (U = 452.500, Z = —0.896, p = .622); Disgusted (U = 425.500, Z = —1.760, p = .412); Happy (U = 413.500,
+Z=-2.144, p= .345); Sad (U = 413.500, Z = —2.144, p = .335); Surprised (U = 516.000, Z = 1.136, p = .618); Scared
+(U = 449.500, Z = —0.992, p = .313). The associated effect size was small for both emotions: Neutral (r = .30); Angry
+(r = .04); Contemp (r = .11); Disgusted (r = .22); Happy (r = .27); Sad (r = .27); Surprised (r = .14); Scared (r = .13) The
+result suggests a limited practical impact of gamification on emotions in the context of this study!?. Table 2 summarizes the
+results.
+
+In summary, in the same direction as our first research question, our findings indicate no statistically significant differences
+in the frequency of the measured emotions between the two groups. Associated effect sizes were also small across all emotions,
+suggesting a limited practical impact of the gamification intervention on students’ emotional experiences in this specific context.
+These findings suggest that the gamification design adopted in this experiment did not produce detectable differences in the
+frequency of students’ emotional expressions. Therefore, our results should be interpreted as evidence regarding this particular
+implementation rather than as evidence against the emotional effectiveness of gamification as a broader design approach.
+
+RQ3: What are the sequential relationships between students’ emotions during LMS interaction?
+
+Given the exploratory nature of the emotional transition analysis and the relatively limited sample size available for sequential
+analyses, transitions were examined descriptively rather than through inferential statistical modeling. Consequently, the reported
+transition frequencies should be interpreted as preliminary indications of potential emotional dynamics rather than statistically
+validated differences between conditions. Future studies with larger samples should apply transition probability models,
+sequential analyses, or Markov-based approaches to determine whether the observed emotional pathways differ significantly
+across learning environments.
+
+An initial analysis of the transitions between emotions experienced by participants in the experimental group reveals distinct,
+repeating transition patterns. The most frequent transition occurred from angry to happy (19 times), indicating that episodes
+classified as anger were frequently followed by expressions classified as happiness during system interaction. Although this
+pattern may reflect emotional shifts occurring while participants interacted with the system, the present data do not allow
+conclusions regarding the causes underlying these transitions.
+
+3/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 4/16
+
+[Página 5]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+Table 2. Inferential analysis (frequency).
+
+Group N M s torU Z Pp dorr
+
+Neutral C 31 75.935 37.738
+Neutral E 31 64221 27.402
+Angry C 31 28.065 30.721
+Angry E 31 21.506 18.720
+ContempC 31 0.548 1.150
+ContempE 31 0.942 1.949
+DisgustedC 31 3.944 7.254
+DisgustedE 31 5.149 7.739
+Happy C 31 5.355 6.902
+Happy E 31 7.025 8.350
+Sad C 31 3.343 6.173
+Sad E 31 5.375 817
+SurprisedC 31 9.663 14.210
+SurprisedE 31 7.129 10.187
+Scared C 31 0.011 0.061
+Scared E 31 0.033 0.102
+
+554.500 2.368 .301 .30
+
+490.000 0.304 .899 .04
+
+452.500 -0.896 .622 ll
+
+425.500 -1.760 412 .22
+
+413.500 -2.144 .345 .27
+
+413.500 -2144 .335 .27
+
+516.000 1.136 .618 .14
+
+449.500 -0.992 313 13
+
+Key: N: Number of participants; M: Mean (for t-test) or Mean rank (for
+Mann-Whitney U test); S: Std. Dev. (for t-test) or Sum of ranks (for
+Mann-Whitney U test); t: t-test t; U: Mann-Whitney U; Z: Z score; p: p-
+value; d: Cohen’s d (for t-test effects size); r: r-value (for Mann-Whitney
+effect size); C: Control group; E Experimental group.
+
+Similarly, there were many transitions from angry to surprised (14 times). Since anger was the most frequently appearing
+emotion, it is unsurprising that we found multiple instances where participants switched emotional states from anger. Among
+bidirectional shifts between emotions, the most often appearing one was from happy to angry, which occurred 19 times. The
+transition from disgusted to happy appeared six times, reflecting a moderate shift from negative to positive emotion. Contemp
+and disgust were relatively stable emotions, with Contemp most frequently transitioning to anger (nine times) and disgust
+transitioning to anger 10 times. Notably, transitions involving scared were absent, indicating that this emotion was neither
+significantly experienced nor transitioned to/from other states. The surprised state was reached from angry (four times),
+disgusted (once), happy (three times), and sad (twice). However, it did not frequently transition further. Figure 2a presents the
+results.
+
+On the other hand, analyzing the control group, the results indicate the most frequent transition occurs from “disgusted”
+to “angry” with a count of 28, suggesting a strong shift between these emotions. “Angry” to “disgusted” (22) and “angry” to
+“happy” (16) are also prominent transitions, indicating variability in emotional shifts from anger and may suggest that negative-
+to-negative emotional transitions appear more frequently in the non-gamified condition, possibly due to them alleviating
+frustration. “Happy” to “angry” (16) is another notable transition, highlighting a bidirectional shift between happiness and
+anger. “Sad” to “surprised” (3) and “happy” to “surprised” (5) indicate some movement toward surprise, however, with lower
+frequency. Minimal transitions are observed for emotions like “scared”, which has no transitions in this dataset. Figure 2b
+presents the results.
+
+Discussion
+
+In an effort to fill a gap in the field of gamification in education, which is to understand how gamification affects learners’
+emotions, in this study, we analyzed the effects of gamification on students’ emotions. Our primary finding was the absence of
+statistically significant differences in the measured emotional expressions between participants interacting with the gamified
+and non-gamified versions of the LMS. Importantly, this finding should be interpreted as the absence of detectable differences
+under the conditions of this study rather than definitive evidence that gamification does not affect learners’ emotions. The
+statistical interpretation of the findings should consider the sensitivity of the study design. While the sample size was adequate
+for detecting large between-group differences, smaller emotional effects commonly observed in educational technology
+interventions may not have been identified. Accordingly, the present findings provide stronger evidence against the existence of
+large emotional effects than against the existence of more subtle emotional influences of gamification.
+
+4n5
+
+https://www.researchsquare.com/article/rs-10119808/v1 5/16
+
+[Página 6]
+27/07/2026, 14:02 The effects of gamification on students' emotions | Research Square
+
+Transitions' count of control group
+
+Transitions’ count of experimental group
+
+angry
+
+angry -17.5 -25
+contempt
+contempt 15.0
+20
+disgusted 12.5 disgusted -
+u
+2 8 15
+§ happy- 10.0 2 happy
+8 &
+sad Es sad E 0 3 0 3 c 10
+5.0
+surprised surprised A
+25
+scared scared
+0.0 o
+> & 8 z 2 3 > E g > 3 =
+E F € Fa: ¢ 2 E & 3 2 E
+= & a = e & 5 E a 2 5 E
+8 8 a 5 E) 5
+= ¥ bd o) o a
+Target Target
+(a) Emotional transitions in the experimental group (b) Emotional transitions in the control group
+
+Figure 2. Emotional transitions across groups: (a) experimental; (b) control.
+
+An important observation is that anger emerged as the most frequently detected emotional state across both experimental
+conditions. While this finding may indicate moments of frustration associated with task completion, alternative explanations
+should also be considered. Previous research has suggested that automated facial-expression recognition systems may
+occasionally classify facial configurations associated with concentration, cognitive effort, problem-solving, or task-focused
+attention as anger-like expressions?. Therefore, the high prevalence of anger observed in this study should not necessarily be
+interpreted as evidence that participants were predominantly experiencing negative affect. Instead, it may reflect a combination
+of genuine frustration, increased cognitive effort, and limitations inherent to facial-expression-based emotion detection. Future
+studies combining facial analysis with self-report measures or physiological sensors could help clarify the nature of these
+emotional states.
+
+One possible explanation for the lack of significant emotional differences is the design of the gamification elements
+themselves. It is crucial to assess whether these features were sufficiently engaging or if participants perceived them as
+superficial. The effectiveness of gamification largely depends on the quality and relevance of the game mechanics used‘. If the
+elements did not resonate with users or align with their intrinsic motivations, they may not have elicited the intended emotional
+responses.
+
+An important consideration when interpreting these findings is that the present study did not include a direct manipulation
+check assessing participants’ perceptions of gamefulness, engagement with the gamification elements, or perceived differences
+between the two system versions. Consequently, although the gamified version included ten gamification elements, we cannot
+determine the extent to which participants actively perceived or engaged with those features. Therefore, the observed null
+findings may reflect either a genuinely limited emotional impact of the implemented gamification design or insufficient
+differentiation between the subjective experiences produced by the two versions of the system.
+
+Another factor to consider is the duration of the experiment. The time participants spent interacting with the gamified
+system may not have been sufficient to produce noticeable emotional changes. Emotions are transient and influenced by various
+factors?!, which may include gamified elements. A longer-term study could reveal different emotional response patterns as
+participants become more accustomed to the gamified environment.
+
+The nature of the educational tasks used in the study may also have played a role. If the tasks were not sufficiently
+challenging or engaging, they might not have elicited strong emotional reactions, regardless of the gamification?. Ensuring
+
+that tasks align with participants’ interests and skill levels is critical in determining the emotional impact of gamification.
+
+Additionally, individual differences among participants, such as prior experiences with gamification, personal preferences, and
+emotional baseline, could have influenced the results”>-*>. Some participants may have been more receptive to gamification
+than others, potentially diluting the overall emotional impact when averaged across the entire sample.
+
+The results reveal recurring emotional transition patterns, with certain emotional states appearing sequentially more
+frequently than others (see Figures 2a and 2b). A notable observation is the bidirectional transition between anger and happiness,
+with 19 instances of participants shifting from anger to happiness and vice versa. This finding indicates that anger and
+
+5/15
+
+https://www.researchsquare.com/article/rs-10119808/v1
+
+6/16
+
+[Página 7]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+happiness often appeared sequentially during interaction with the learning management system. While this pattern may reflect
+shifts between negative and positive affective states, the current study does not allow conclusions regarding the underlying
+psychological mechanisms responsible for these transitions.
+
+Additionally, anger frequently transitions to surprise (14 times), indicating that unexpected events or system features may
+play a role in modulating emotions. One possible interpretation is that these transitions were associated with unexpected events
+occurring during system interaction. However, the present study was not designed to identify which specific features or events
+triggered individual emotional transitions. Conversely, surprise does not show a strong return transition to anger, implying that
+participants do not often react negatively to unexpected events. However, may process them differently.
+
+Negative emotions such as contemp and disgust show relatively stable patterns. Contemp transitions to anger nine times,
+and disgust transitions to anger 10 times, highlighting a tendency for these negative states to escalate into frustration. However,
+disgust also transitions to happiness six times, suggesting that participants sometimes overcome their initial aversion or
+dissatisfaction, although the specific factors associated with these transitions cannot be determined from the current data.
+Interestingly, the emotion “scared” does not appear as a significant transition point, either as a source or target. This finding
+suggests that facial expressions classified as fear were rarely detected. This could be an important insight for refining the
+system, especially if inducing a sense of thrill or challenge was intended.
+
+The relatively frequent transition from sadness to anger (nine times) also suggests that frustration may follow moments of
+discouragement, potentially when participants struggle with challenges. However, sadness does not transition to happiness
+at a high rate, indicating that overcoming sadness may require additional system mechanisms beyond those currently in
+place. The prominence of transitions involving anger, happiness, and surprise suggests that these emotional states frequently
+co-occurred within participants’ emotional trajectories during system interaction. However, no conclusions can be drawn
+regarding engagement levels based solely on these transition frequencies.
+
+Threats to validity and limitations
+
+This study identified several threats to validity and limitations, each with potential implications for the interpretation of our
+findings. Although measures were taken to mitigate these challenges, some limitations remain inherent to the study design.
+Initially, while participants were randomly assigned to the experimental and control groups, the manual method of turning a
+cup for group assignment could introduce bias or errors. To mitigate this, randomization was conducted immediately before the
+experiment in the presence of two researchers, minimizing the potential for systematic bias.
+
+We relied on Noldus Observer XT and FaceReader for detecting and analyzing emotional responses. Although these tools
+are widely regarded for their accuracy and reliability, any inherent inaccuracies could affect the results. To address this, all
+equipment was calibrated and tested according to the software manuals before use. At the same time, potential confounders,
+such as prior experience with gamified systems, individual motivation levels, or familiarity with the educational content, were
+not controlled. Standardized tasks and uniform instructions aimed to minimize these effects. However, residual influence
+remains a possibility.
+
+Another limitation concerns treatment fidelity. Although participants in the experimental condition interacted with a version
+of the LMS containing gamification elements, the present study did not directly assess the extent to which participants noticed,
+used, or actively engaged with individual gamification features. Consequently, we cannot determine whether all participants
+similarly experienced the gamified environment. Future studies should incorporate system log data and behavioral interaction
+metrics to investigate participants’ engagement with specific gamification elements and their relationship with emotional
+responses.
+
+An additional consideration concerns the interpretation of facial-expression recognition data as indicators of emotional
+states. Although FaceReader is a widely used and validated tool for automated affect detection, the broader literature contains
+ongoing debate regarding the extent to which emotional experiences can be reliably inferred from facial expressions alone.
+While basic-emotion theories suggest that facial movements can provide meaningful indicators of underlying emotions,
+alternative perspectives argue that emotions are context-dependent constructions that may not map consistently onto specific
+facial configurations. Consequently, the emotional measurements reported in this study should be interpreted as estimates
+derived from observable facial-expression patterns rather than as direct measurements of participants’ subjective emotional
+experiences.
+
+Another limitation is that the present study did not directly assess learning outcomes, focusing instead on emotional
+experiences during system interaction. Consequently, it is not possible within this specific study to determine whether the
+observed emotional patterns were associated with differences in learning performance. Future research should continue to
+investigate the relationship between emotional dynamics and educational outcomes using integrated analytical approaches.
+
+The sample size of 62 participants provided sufficient statistical sensitivity to detect large effects but offered more limited
+power for identifying small or moderate effects. Consequently, while the analyses do not support the existence of large
+emotional differences between conditions, smaller effects may have remained undetected. Therefore, the absence of statistically
+
+6/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 7/6
+
+[Página 8]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+significant differences should not be interpreted as evidence of equivalence between the gamified and non-gamified conditions.
+Future studies using larger samples would enable more precise estimation of potential emotional effects and increase confidence
+in null findings. In the same line, our sample consisted of students from a European university, representing 19 countries. While
+this diversity adds value, it limits the applicability of findings to other educational contexts or populations. Future research
+should replicate the study with more varied demographics and settings to enhance external validity.
+
+Conducting the study in a controlled laboratory environment allowed precise control over experimental conditions. However,
+it may not reflect real-world educational settings. Field studies in authentic environments are recommended for future research
+to validate these findings. Moreover, participants interacted with the system for up to 30 minutes, which may not capture
+the long-term effects of gamification on emotions. Future research should investigate extended interaction periods to better
+understand the sustained impact of gamified systems.
+
+The use of standardized tasks ensured control over task-related variables. However, it reduced the generalizability of diverse
+educational activities. Including a broader range of tasks in future studies would improve the applicability of findings. Similarly,
+the use of observational tools to measure emotional responses might introduce bias if participants were aware of being observed.
+To mitigate this, participants were not informed about the focus on their emotional responses, minimizing behavioral alterations
+due to observation.
+
+Despite the Eagle-edu system’s prior use in various studies, participants’ familiarity or comfort with the platform could
+introduce biases. To address this, a standardized introduction to the system was provided to all participants, reducing
+unfamiliarity. Including participants from 19 countries introduces variability in emotional responses due to cultural differences
+in emotional expression. While this diversity enriches the study, it complicates result interpretation. Future studies should
+explicitly consider cultural factors and potentially analyze data for separate cultural groups.
+
+Finally, regarding the analysis of emotional transitions, due to the available sample size and the comparatively low
+occurrence of several emotional states, transition analyses were conducted descriptively. Therefore, although the observed
+patterns provide useful insights into potential emotional dynamics during system interaction, they should be interpreted
+cautiously and should not be viewed as evidence of statistically significant differences in emotional trajectories between the
+experimental conditions.
+
+Theoretical implications
+
+This study advances our understanding of the outcomes of engaging with gamified learning tools and supports the existing
+research that has focused on cognitive and behavioral outcomes!!- 12.26 by including the perspective of emotional outcomes. We
+provided empirical evidence on the impacts of one gamified learning tool on the basic emotions'* of happiness, sadness, anger,
+surprise, fear, and disgust in a controlled laboratory setting, which contributes to the growing body of research investigating
+emotions in gamified environments through objective measurement approaches. In our empirical study, there were no statistically
+significant differences in experienced emotions between a group using a standard version of the tool and a group using a
+gamified version of the tool. Despite this, we saw multiple different emotions manifest rather consistently across the participant
+pool. This finding indicates that the gamification design implemented in the present study may not play as significant a role as
+could be assumed based on previous research (e.g.,2”-°). However, it remains unclear whether we would see larger differences
+with heavier gamification approaches or games that build on elements such as fictional narratives, world building, social
+challenges, and immersive gameplay? 230.
+
+The present study deliberately focused on emotional processes rather than learning outcomes. This decision was motivated
+by the specific objective of examining how students’ emotional states evolve during interaction with a gamified learning
+environment and by the existing emphasis of the gamification literature on cognitive and performance-related outcomes”! .
+Importantly, learning outcomes were investigated separately within the broader research project from which this study emerged.
+Previous work using the same experimental context identified positive effects of gamification on students’ academic performance,
+suggesting that improvements in learning outcomes may occur even in the absence of substantial differences in basic emotional
+expressions. Taken together, these findings highlight the importance of examining emotional and learning-related outcomes as
+complementary, but not necessarily equivalent, dimensions of the gamified learning experience.
+
+The use of automated emotion detection in this study aligns with the broader goals of affective computing within smart
+educational contexts. By leveraging objective, real-time data from FaceReader and eye-tracking, this research moves beyond the
+limitations of subjective self-reports to provide a high-resolution map of the learner’s emotional state. These findings contribute
+to the theoretical understanding of how ’smart’ systems can perceive human affect, suggesting that while gamification elements
+are identifiable by the system, they do not fundamentally alter the primary emotional intensity elicited by the instructional
+content itself. This underscores a need for theoretical models in smart education that prioritize the interplay between automated
+physiological sensing and core task design.
+
+According to the cognitive-emotional view on gamification by Mullins and Sabherwal?”, the outcomes of a gameful system
+are always the result of an interplay between cognitions and emotions. Thus, by shedding light on the emotional side of gameful
+
+715
+
+https://www.researchsquare.com/article/rs-10119808/v1 8/16
+
+[Página 9]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+learning tools, we provide new empirical evidence to support existing theoretical models of gamification outcomes, such as the
+cognitive-emotional view on gamification?”. More precisely, our findings suggest that the core learning content may be a key
+driver of student emotions, and while gamification has some impact, this impact is small in comparison. We also contribute to
+this body of literature through empirical evidence on transitions between emotions while engaged with a gamified learning
+system. We show that there are both bidirectional and unidirectional relationships between basic emotions, and this opens the
+need for more research into the shifting emotional states and their relationship with learning. These findings relate to work on
+the importance of linking learning attributes to game mechanics, a crucial link that has been addressed in depth in previous
+research. In light of this body of literature, it is also important to examine the quality of the gamification implementation
+concerning the observed student emotions.
+
+Another possible explanation for the lack of significant emotional differences between gamified and non-gamified conditions
+is through the Self-Determination Theory, where motivation and engagement are driven by the core psychological needs of
+autonomy, competence, and relatedness*>. The gamification elements may have been perceived as rigid or externally imposed,
+which would make students feel the game is controlling instead of motivating, reducing internal motivation, and increasing
+neutral responses. This may be mitigated by adaptive gamification elements that allow students to select rewards and set
+personal goals. They may have also felt little sense of progress due to the lack of more immediate and clear feedback (high
+levels of anger to surprised and angry to happy in the experimental group, in Figure 2a), and a possible lack of achievement
+(frequently transitioning from happy to angry in Figure 2a). Adding more challenge-based gamification elements, scaffolded
+difficulty in our questionnaires, and more meaningful feedback may help increase competence-driven engagement. Finally,
+happiness and surprise may increase in the experimental group with an increase in relatedness by adding more socially related
+gamification elements like team-based challenges and cooperative quests”.
+
+The lack of significant emotional differentiation between the gamified and non-gamified groups suggests that ‘meta-game’
+interactions, typical of many current smart platforms, may lack the depth required to influence basic achievement emotions.
+Theoretically, this indicates that for gamification to be effective in an interactive smart environment, it must be ‘intrinsic’,
+embedded directly into the learning mechanics rather than added as a reward layer. This finding encourages a shift in the design
+of interactive technology away from extrinsic motivators, like leaderboards and points, toward smart instructional designs that
+gamify the cognitive challenge itself, thereby fostering a more authentic and emotionally resonant interactive experience.
+
+Practical implications
+
+Our work provides two practical implications for gamified learning system design. First, since in our empirical context
+gamification appeared to have a non-significant impact on basic emotions, designers could focus more on other aspects, such as
+cognitive load management and meaningfulness of the learning tasks, to foster positive emotions in participants. Of course,
+gamification is a broad umbrella term for various solutions, and our empirical findings offer only perspectives on one context,
+so we encourage practitioners to apply these findings through trial, experimentation, and testing. Second, the discovered
+transitions between emotional states could be more knowingly manipulated, and designers could even look forward to mapping
+emotional state pathways for learners where key learning content is tied to moments of positive emotions. Designers could
+also examine system interaction logs alongside emotional data to identify which gameful features are associated with specific
+emotional trajectories. Such information may help designers refine gamification implementations and better understand how
+learners engage with individual elements throughout the learning process.
+
+A key practical contribution for designers of smart learning environments is the identification of specific emotional transition
+patterns, such as the frequent shift from anger to happiness observed in this study. In a truly “smart” system, these detected
+transitions can serve as algorithmic triggers for adaptive interventions. For instance, if an automated system detects that a
+student is lingering in a state of frustration (anger) without transitioning to a positive state (happiness), it could proactively
+adjust the difficulty level or provide scaffolded feedback. Utilizing these objective transition matrices allows developers to
+move toward "emotionally-aware” interfaces that respond dynamically to the user's real-time psychological needs rather than
+relying on static gamification wrappers.
+
+Our work also provides some insights into UX research practices at companies beyond the realm of gamification. Today,
+multiple companies engage in UX research efforts to better understand how various product design elements are likely to be
+received, or are actively received, by the target audience”. We demonstrate that we can observe differences in emotions
+between participants using a gameful system and a non-gamified version of it. Such data could be useful for companies
+carrying out A/B testing to identify which version is better received by target audiences*?, or help UX researchers identify
+user pain points*!. While our study was conducted in a controlled laboratory environment, similar studies could potentially
+be done remotely as well, with specific instructions provided to participants regarding how they should set up a camera to
+film themselves. Such studies can offer game and learning environment UX researchers new tools for understanding their
+participants’ experiences.
+
+8/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 9/16
+
+[Página 10]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+Research agenda
+
+For future research, we encourage replicating this work with other learning systems to better understand what context-dependent
+phenomena may have appeared in our data. For example, it could be that the learning system we used provokes an unusually
+high amount of anger in participants, and that the basic emotions experienced with a competing system look different. Such
+studies would add more robustness to our findings and contribute important additional empirical evidence for building more
+generalizable theoretical frameworks for understanding the impacts of gamification on learners’ emotions in an educational
+setting.
+
+We also encourage future studies to map specific emotions to specific instances in learning scenarios and to examine
+participants’ interactions with individual gamification elements through system logs and behavioral analytics. Such analyses
+would enable researchers to investigate treatment fidelity and identify which gamification features are actually perceived
+and engaged with by learners, thereby improving our understanding of how specific gameful affordances relate to emotional
+experiences.
+
+Another avenue for future research relates to the way emotions are detected. According to2, the affective neuroscience
+approach, emotions are fundamental and shared across mammalian species. There are circuits in our brain specifically
+responsible for certain emotions, and these emotions not only direct our behavior, but can be recognized reliably from facial
+expressions*2. While this was the approach we took in this paper,” challenges the fundamental assumption of emotions having
+dedicated brain circuits and being recognizable from facial expressions in her popular theory of constructed emotion.? argues
+that emotions are constructed in the brain as the outcome of the complex interplay between different brain regions, and that part
+of emotions is learned, or the way emotions manifest can be impacted by learned information”.
+
+The theory of constructed emotion challenges the approach that we can reliably detect emotions simply from people’s faces.
+What this means for our research is that future research could investigate alternative approaches for emotion detection (such as
+self-reports and bodily sensors) to boost the reliability of the findings. Furthermore, we encourage scholars to examine the
+fundamental assumptions they make in the study of emotions in the context of gamification and to see whether emotions are
+indeed ubiquitous or whether we see evidence of the manifestation of individual differences.
+
+Finally, emotional responses should be further examined outside the controlled lab environment, such as classrooms
+or home-based e-learning contexts, as emotional engagement may differ in naturalistic educational settings, due to social
+interactions and external stressors?0*4. While we acknowledge the challenges associated with this type of approach, such
+studies have the potential to yield unprecedented insights for the community by enabling an understanding of students’ emotions
+in an ecological context.
+
+Methods
+
+Study Design
+
+In this study, we investigated the effects of gamification on students’ basic emotions. To achieve this, we conducted a between-
+subjects controlled experiment. By conducting this study, we aim to move beyond responses centered on students’ subjective
+experiences and gain a clearer understanding of the effects of gamification on their emotions. Data collection was conducted
+in a usability laboratory between November and December 2023. The controlled lab environment enabled monitoring of
+physiological and emotional responses during system interaction and allowed for immediate post-task interviews. In this study,
+we did not aim to understand exactly which specific aspect of gamification causes a particular emotion.
+
+Participants
+
+Participants were recruited via the Tampere University DMLab pool, utilizing ORSEE3 software for coordination?, an internal
+system at Tampere University used exclusively to invite students to participate in studies conducted by university researchers.
+Due to the interdisciplinary nature of the study, no prior exclusion criteria were used. After data collection, we filtered outliers
+with data imputation, applying the mean value for each row with a Z-score larger than 2.5. The final sample, excluding outliers,
+comprised 62 students from 19 countries; 33 identified themselves as female, 26 as male, two as non-binary, and one preferred
+not to respond. The average age was 25 years, with a standard deviation of 5.00 and a variance of 26.00. Participants had never
+used the platform before. Each participant received a movie ticket as compensation (i.e., each ticket cost 8 euros). None of the
+participants had prior contact with the gamified LMS used in the system or with the researchers involved in the study. The
+Institutional Review Board approved the study, and participants provided informed consent for participation and recording.
+
+Materials
+
+We employed the gamified educational system Eagle-edu (https: //eagle-edu.com.br/) to conduct our study (i.e.,
+present the educational tasks for the participants). We chose this system because of its adaptability, which empowers educators
+to create diverse educational activities. The system incorporates 21 distinct gamification elements, which align with the
+Taxonomy of Gamification Elements for Educational Environments (TGEEE) proposed by*º. These elements can be selectively
+
+9/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 10/16
+
+[Página 11]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+enabled or disabled by teachers, allowing them to personalize the gamification designs. Thus, the system allowed us to assemble
+the appropriate gamification design for the study (i.e., for both experimental and control groups). At the same time, in addition
+to being used commercially, allowing it to imitate a real environment as closely as possible, the system has already been used in
+several scientific studies, e.g. 04188, thus avoiding biases related to the use of the system.
+
+In our study, we utilized two different versions of the system: the version used with the participants in the experimental
+group presented a series of educational tasks incorporating a typical gamification design consisting of 10 gamification elements
+that created a meta-game interaction around the learning activity (distinct from, for instance, serious games or game-based
+learning). The 10 gamification elements were specifically selected because they enabled quick identification and interaction
+within the system during the controlled study period. Other elements available in the system (e.g., narrative, storytelling, and
+ranking) require a longer usage period to be perceived and promote interaction. The version used with the participants in the
+control group presented the same educational tasks but without gamification.
+
+For the experimental group, the gamification design comprised 10 gamification elements, aligned with the taxonomy
+proposed by Toda et al;
+
+* Acknowledgment: This element provides feedback recognizing specific player actions. In our system, this was
+represented by student badges.
+
+Chance: Linked to randomness and probability, this element affects the likelihood of certain outcomes.
+
+Competition: Arising when multiple players compete for a shared goal.
+
+Economy: This element involves game transactions, including the monetization of values. Our system featured coins as
+currency for in-game purchases.
+
+* Imposed Choice: Players had to make decisions to progress in the game. Our system offered random options to increase
+rewards.
+
+* Level: Representing hierarchical progression, levels in our system were categorized as Bronze, Silver, Gold, Ruby, and
+Diamond.
+
+Objective: Goals, either quantifiable or spatial, guided players in the game. In our system, a quest tree structure
+represented the objectives.
+
+* Points: Points measure user performance, with experience points (XP) serving as the unit of measurement.
+* Progression: This element tracked player advancement through a progress bar integrated into the activity tree.
+
+* Stats: Displaying a player’s results and progress, this element provides visible information on all user progress data.
+
+The objective of the present study was not to isolate the effects of individual gamification elements but rather to evaluate the
+emotional responses associated with a realistic gamification design composed of multiple interacting elements. Consequently,
+individual engagement with specific elements was not analyzed separately. Examples of the system’s graphical user interface
+are provided in the supplementary materials.
+
+Procedure
+
+The study was conducted in three key steps: i) random assignment, ii) system interaction, and iii) emotions assessment. In
+the first step, participants were randomly assigned to either the experimental or control group. The randomization process
+was carried out with the participant (manually) immediately before the start of the experiment, after the student entered the
+laboratory, where participants were asked to turn a cup over. Inside that cup, there was a paper indicating whether the participant
+would be in the experimental or control group. The participant was not informed which group they would be in. In the
+second step, system interaction, participants engaged with the system for at least 30 minutes, completing educational tasks and
+exploring its features. In the third step, emotion assessment, data were collected during system usage of the software Noldus
+Observer XT (i.e., through equipment attached to the participants’ bodies). Figure 3 summarize the study’s procedure.
+
+Measurement
+
+In our study, we utilized Noldus Observer XT (https: //www.noldus.com/observer—xt—human) and FaceReader
+(https: //www.noldus.com/facereader) to collect and analyze participants’ emotional responses. These tools were
+selected for their robust capabilities in behavioral coding and facial expression analysis, critical for accurately capturing and
+interpreting emotional data. Figure 4 exemplifies the tools’ usage.
+
+10/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 11/16
+
+[Página 12]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+get Seite Seana ea
+Emotions collection
+
+(with Noldus
+Observer XT)
+
+Experimental
+group
+
+]
+1
+1
+1
+
+Entering the
+laboratory
+
+Use gamified version
+of the system
+
+Random assignment
+
+Control
+group
+
+Participation
+
+Use non-gamified
+ends
+
+version of the system
+
+Figure 3. Study’s procedure. The diagram illustrates the process of a study with two groups: an experimental group and a
+control group. Participants are randomly assigned to either group. Upon entering the laboratory, participants are asked if they
+agree to participate. If they do not agree, their participation ends. If they agree, those in the experimental group use a gamified
+version of the system, while those in the control group use a non-gamified version. Data collection for the students’ emotions
+from both groups was conducted during the system usage.
+
+E o
+| Ml WINK
+
+Figure 4. View from a face captured by the camera inside a booth. The image was manipulated to preserve the participant’s
+anonymity; however, it still showed how facial muscles were mapped.
+
+Data analysis
+To ensure the appropriate selection of statistical tests, we began by assessing the distribution of the collected data. Given the
+sample size of N = 62, we applied the Shapiro-Wilk test”. Developed by Shapiro and Wilk“, this test is particularly suited for
+small to moderate sample sizes'?. It computes a W statistic and p-value that compares the observed data to what would be
+expected under a normal distribution. A high p-value, i.e., p > 0.05, suggests that the data may be normally distributed”.
+Then, according to the Shapiro-Wilk test results (i.e., p < .001 for all emotions except neutral emotion p = .198), we
+conducted a Student’s t-test’ for normally distributed emotions’ data (i.e., where data do not reject the null hypothesis of
+normality) and a non-parametric Mann-Whitney U test for the others (i.e., where data reject the null hypothesis of normality)
+to compare the means between the experimental and control groups, both using the two-sided approaches>!. Because no
+statistically significant differences were observed across the tested emotions, correction for multiple comparisons would not
+affect the interpretation of the results.
+Given the final sample size (N = 62), the study was primarily designed to identify relatively large differences between
+
+11/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 12/16
+
+[Página 13]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+conditions. As a result, the inferential analyses are more informative regarding the absence of large emotional effects than
+the absence of emotional effects altogether. Therefore, the findings should be interpreted with caution, particularly regarding
+potentially small but educationally meaningful effects that may require larger samples to detect reliably. The preregistration
+and study data are available in an OSF repository, which is provided as supplementary material for this article.
+
+Ethical statements
+
+The Institutional Review Board approved the study, and participants provided informed consent for participation and recording.
+All research procedures were conducted in strict adherence to the guidelines established by the Finnish National Board on
+Research Integrity (TENK).
+
+Data availability
+
+The authors declare that all data and materials are available as supplementary information in the article.
+
+Supplementary material
+The study dataset can be accessed from this link: https: //doi .org/10.17605/0SF.IO/GTNHZ
+
+References
+1. Hamari, J. Gamification, chap. Gamification, 1-3 (John Wiley & Sons, Ltd, Oxford, UK, 2019).
+
+2. Koivisto, J. & Hamari, J. The rise of motivational information systems: A review of gamification research. Int. J. Inf.
+Manag. 45, 191-210 (2019).
+
+3. Laato, S. et al. Gamification of walking in nature: A field experiment with pokémon go routes. Proc. ACM on Human-
+Computer Interact. 8, 1-25 (2024).
+
+4. Dai, W.-A., Xu, W. & Xing, Q.-W. Gamified learning impact: a meta-analysis of game element combinations on students’
+learning outcomes. Educ. technology research development 1-27 (2025).
+
+5. Hwang, G.-J. & Chang, C.-C. A self-determination theory-based digital gaming approach to enhancing efl learners’
+competence in applying professional english. Educ. technology research development 1-19 (2024).
+
+6. Li, X., Yang, Y. & Chu, S. K. W. How does gamification bring long-term sustainable effects on children’s learning?
+implications from a crossover quasi-experimental study. Educ. technology research development 72, 1357-1381 (2024).
+
+7. Ramadhan, A., Warnars, H. L. H. S. & Razak, F. H. A. Combining intelligent tutoring systems and gamification: a
+systematic literature review. Educ. Inf. Technol. 29, 6753-6789 (2024).
+
+8. Zakaria, A., Anas, B. & Malki, M. O. C. A systematic review of gamification in moocs: Effects on student motivation,
+engagement, and dropout rates. J. Educ. Online 21, n2 (2024).
+
+9. Hong, Y., Saab, N. & Admiraal, W. Approaches and game elements used to tailor digital gamification for learning: A
+systematic literature review. Comput. & Educ. 105000 (2024).
+
+10. Xiao, Y. & Hew, K. F. Personalised gamification enhances student participation but produces mixed effects on emotional
+and cognitive engagements: a systematic review. Interact. Learn. Environ. 32, 7014-7040 (2024).
+
+11. Sotos-Martinez, V. J., Ferriz-Valero, A., García-Martínez, S. & Tortosa-Martínez, J. The effects of gamification on the
+motivation and basic psychological needs of secondary school physical education students. Phys. Educ. Sport Pedagog. 29,
+160-176 (2024).
+
+12. Taskin, N. & Kiliç Cakmak, E. Effects of gamification on behavioral and cognitive engagement of students in the online
+learning environment. Int. J. Human-Computer Interact. 39, 3334-3345 (2023).
+
+13. Chen, X. er al. Learner emotions in collaborative learning: bibliometrics with topic modelling. J. Comput. Educ. 1-34
+(2026).
+
+14. Ekman, P. An argument for basic emotions. Cogn. & emotion 6, 169-200 (1992).
+
+15. Korn, O., Boffo, S. & Schmidt, A. The effect of gamification on emotions-the potential of facial recognition in work
+environments. In International Conference on Human-Computer Interaction, 489-499 (Springer, 2015).
+
+16. Zatarain Cabada, R., Barrón Estrada, M. L., Ríos Félix, J. M. & Alor Hernández, G. A virtual environment for learning
+computer coding using gamification and emotion recognition. Interact. learning environments 28, 1048-1063 (2020).
+
+12/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 13/16
+
+[Página 14]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+17.
+18.
+
+19.
+20.
+
+21.
+22.
+
+23.
+
+24.
+
+25.
+
+26.
+
+27.
+28.
+
+29.
+
+to
+o
+
+Richards, J. C. Exploring emotions in language teaching. Relc J. 53, 225-239 (2022).
+
+Shu, Y. et al. Emotion distribution learning based on peripheral physiological signals. JEEE Transactions on Affect.
+Comput. 14, 2470-2483 (2022).
+
+Field, A. Discovering statistics using IBM SPSS statistics (sage, 2013).
+
+D’ mello, S. K. & Kory, J. A review and meta-analysis of multimodal affect detection systems. ACM computing surveys
+(CSUR) 47, 1-36 (2015).
+
+Brickman, P. Hedonic relativism and planning the good society. Adapt. level theory 287-301 (1971).
+
+Nacke, L. & Lindley, C. A. Flow and immersion in first-person shooters: measuring the player’s gameplay experience. In
+Proceedings of the 2008 conference on future play: Research, play, share, 81-88 (2008).
+
+Xiao, Y. & Hew, K. F. Personalized gamification versus one-size-fits-all gamification in fully online learning: Effects on
+student motivational, behavioral and cognitive outcomes. Learn. Individ. Differ. 113, 102470 (2024).
+
+Rodrigues, L. et al. How personalization affects motivation in gamified review assessments. Int. J. Artif. Intell. Educ. 34,
+147-184, DOI: 10.1007/s40593-022-00326-x (2023).
+
+Wang, J., Gong, S., Cao, Y., Guo, X. & Peng, P. Personalization in educational gamification: Learners with different trait
+competitiveness benefit differently from rankings on leaderboards. Comput. & Educ. 105196 (2024).
+
+Baiden, P., Essel, H. B., Vlachopoulos, D., Tachie-Menson, A. & Essuman, M. A. The effect of gamification on home
+economics students’ motivation and engagement in drawing activities. Technol. Knowl. Learn. 1-22 (2022).
+
+Mullins, J. K. & Sabherwal, R. Gamification: A cognitive-emotional view. J. Bus. Res. 106, 304-314 (2020).
+
+Thomas, N. J. & Baral, R. Mechanism of gamification: Role of flow in the behavioral and emotional pathways of
+engagement in management education. The Int. J. Manag. Educ. 21, 100718 (2023).
+
+Laato, S., Islam, A. N. & Laine, T. H. Playing location-based games is associated with psychological well-being: an
+empirical study of pokémon go players. Behav. & Inf. Technol. 41, 1888-1904 (2022).
+
+Kordyaka, B., Laato, S., Weber, S., Hamari, J. & Niehaves, B. Exploring the association between engagement with
+location-based game features and getting inspired about environmental issues and nature. In Proceedings of the CHI
+Conference on Human Factors in Computing Systems, 1-15, DOI: https://doi.org/10.1145/3613904.3642786 (ACM, 2024).
+Oliveira, W. et al. The effects of gamification on students’ academic performance. Technol. Knowl. Learn. 1-28 (2026).
+Arnab, S. et al. Mapping learning and game mechanics for serious games analysis. Br. J. Educ. Technol. 46, 391-411
+(2015).
+
+Lameras, P. et al. Essential features of serious games design in higher education: Linking learning attributes to game
+mechanics. Br. journal educational technology 48, 972-994 (2017).
+
+Laato, S. et al. Evaluation of the pedagogical quality of mobile math games in app marketplaces. In 2020 IEEE International
+Conference on Engineering, Technology and Innovation (ICE/ITMC), 1-8 (IEEE, 2020).
+
+Adams, N., Little, T. D. & Ryan, R. M. Self-determination theory. Dev. self-determination through life-course 47-54
+(2017).
+
+Zhang, J., Wang, K. & Zhang, Y. Physiological characterization of student engagement in the naturalistic classroom:
+A mixed-methods approach. Mind, Brain, Educ. 15, 322-343, DOI: https://doi.org/10.1111/mbe.12300 (2021). https:
+//onlinelibrary.wiley.com/doi/pdf/10.1111/mbe.12300.
+
+Denisova, A., Bromley, S., Mirza-Babaei, P. & Mekler, E. D. Towards democratisation of games user research: Exploring
+playtesting challenges of indie video game developers. Proc. ACM on Human-Computer Interact. 8, 1-25 (2024).
+Nacke, L. E., Mirza-Babaei, P. & Drachen, A. User experience research and design in video games. In Extended Abstracts
+of the CHI Conference on Human Factors in Computing Systems, 1-3 (2024).
+
+Perrig, S. A. et al. Measurement practices in user experience (ux) research: A systematic quantitative literature review.
+Front. Comput. Sci. 6, 1368860 (2024).
+
+Andersen, E., Liu, Y.-E., Snider, R., Szeto, R. & Popovié, Z. Placing a value on aesthetics in online casual games. In
+Proceedings of the SIGCHI Conference on Human Factors in Computing Systems, 1275-1278 (2011).
+
+Giroux-Huppé, C. et al. Identifying psychophysiological pain points in the online user journey: the case of online grocery.
+In Design, User Experience, and Usability. Practice and Case Studies: 8th International Conference, DUXU 2019, Held as
+Part of the 21st HCI International Conference, HCII 2019, Orlando, FL, USA, July 26-31, 2019, Proceedings, Part IV 21,
+459-473 (Springer, 2019).
+
+13/15
+
+https://www.researchsquare.com/article/rs-10119808/v1
+
+14/16
+
+[Página 15]
+27/07/2026, 14:02 The effects of gamification on students’ emotions | Research Square
+
+42. Panksepp, J. Affective neuroscience: The foundations of human and animal emotions (Oxford university press, 2004).
+
+43. Barrett, L. F. The theory of constructed emotion: an active inference account of interoception and categorization. Soc.
+cognitive affective neuroscience 12, 1-23 (2017).
+
+44. Minkley, N., Ringeisen, T., Josek, L. B. & Karner, T. Stress and emotions during experiments in biology classes: Does the
+work setting matter? Contemp. Educ. Psychol. 49, 238-249, DOI: https://doi.org/10.1016/j.cedpsych.2017.03.002 (2017).
+
+45. Greiner, B. Subject pool recruitment procedures: organizing experiments with orsee. J. Econ. Sci. Assoc. 1, 114-125
+(2015).
+
+46. Toda, A. M. et al. Analysing gamification elements in educational environments using an existing gamification taxonomy.
+Smart Learn. Environ. 6, 1-14 (2019).
+
+47. Farias, R., Oliveira, W. & Hamari, J. An early case study analyzing teachers’ acceptance towards of the use of gameful
+approaches in education in brazil. In 2023 IEEE International Conference on Advanced Learning Technologies (ICALT),
+304-306 (IEEE, 2023).
+
+48. do Nascimento, I. M. er al. UnplugGamify: A Didactic Material to Support Student-Centered Unplugged Gamification .
+In 2023 IEEE Frontiers in Education Conference (FIE), 1-8, DOE: 10.1109/FIE58773.2023.10343435 (IEEE Computer
+Society, Los Alamitos, CA, USA, 2023).
+
+Shapiro, S. S. & Wilk, M. B. An analysis of variance test for normality (complete samples). Biometrika 52, 591-611
+(1965).
+
+Student. The probable error of a mean. Biometrika 1-25 (1908).
+
+49
+
+a
+=
+
+51. Mann, H. B. & Whitney, D. R. On a test of whether one of two random variables is stochastically larger than the other. The
+annals mathematical statistics 50-60 (1947).
+
+52. Oliveira, W., Scaico, P. D., Hamari, J., Pereira, L. T. & Hayasaka, A. J. The effects of gamification on students’ emotions:
+A controlled experimental study. In 2025 IEEE International Conference on Advanced Learning Technologies (ICALT),
+180-182 (IEEE, 2025).
+
+53. Oliveira, W., Dantas Scaico, P., Hamari, J., Li, Z. & Shi, L. The effects of gamification on students’ flow experience. J.
+Comput. Assist. Learn. 41, e70120 (2025).
+
+Acknowledgements
+Not applicable.
+
+Funding
+
+This work has been supported by the Academy of Finland Flagship Programme [Grant No. 337653 - Forest-Human-Machine
+Interplay (UNITE)]. The authors would like to thank the company Eagle Soluções Educacionais e Tecnlógicas Adaptativas
+Ltda /EAGLEEDU, for providing the system Eagle-edu free of charge for research purposes through the internal research
+collaboration project 2022/6202-3.1.
+
+Author contributions statement
+
+Wilk Oliveira: Conceptualization, Methodology, Software, Validation, Formal analysis, Resources; Data Curation, Writing -
+Original Draft, Writing - Review & Editing, Visualization, Supervision, and Project administration; Pasqueline Dantas Scaico:
+Conceptualization, Methodology, Investigation, Writing - Original Draft, and Writing - Review & Editing; Juho Hamari:
+Conceptualization, Methodology, Writing - Original Draft, Writing - Review & Editing, Supervision, and Funding acquisition;
+Samuli Laato: Writing - Original Draft; Alexandre Jun Hayasaka: Visualization, Formal analysis; Leonardo Tortoro Pereira:
+Visualization, Formal analysis, and Writing - Original Draft.
+
+Notes
+
+During the preparation of this work, the authors utilized generative artificial intelligence (i.e., Microsoft Copilot) to improve the
+grammatical quality of the text. After the utilization of this tool/service, the authors diligently reviewed and edited the content
+as necessary, assuming full responsibility for the publication’s content. This article is an extension of the conference paper by>.
+This article is part of a broader research project examining the effects of gamification on multiple dimensions of the student
+experience. This project has already generated several publications, including?!5.
+
+14/15
+
+https://www.researchsquare.com/article/rs-10119808/v1 15/16
+
+[Página 16]
+27/07/2026, 14:02 The effects of gamification on students' emotions | Research Square
+
+Additional information
+
+Competing interests: The first author is a partner at the company that granted the rights to use the system Eagle-edu free of
+charge for research purposes in this project.
+
+1515
+
+https://www.researchsquare.com/article/rs-10119808/v1 16/16
