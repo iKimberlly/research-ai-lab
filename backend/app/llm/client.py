@@ -1,10 +1,10 @@
+
 import ollama
 
 from app.config import settings
 
 
 class LLMClient:
-
     def __init__(self):
         self.model = settings.llm_model
 
@@ -12,16 +12,27 @@ class LLMClient:
             host=settings.ollama_host
         )
 
-    def generate(self, prompt: str) -> str:
+    def generate(
+        self,
+        prompt: str,
+        system_prompt: str | None = None
+    ) -> str:
+        messages = []
+
+        if system_prompt:
+            messages.append({
+                "role": "system",
+                "content": system_prompt
+            })
+
+        messages.append({
+            "role": "user",
+            "content": prompt
+        })
 
         response = self.client.chat(
             model=self.model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ]
+            messages=messages
         )
 
         return response["message"]["content"]
