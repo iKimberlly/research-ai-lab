@@ -1,0 +1,51 @@
+
+[
+  {
+    "id": 1,
+    "question": "Quais emoções foram analisadas no estudo sobre gamificação?",
+    "relevant_chunks": [],
+    "source": "gamification"
+  },
+  {
+    "id": 2,
+    "question": "Quais foram os principais resultados do estudo sobre gamificação?",
+    "relevant_chunks": [],
+    "source": "gamification"
+  },
+  {
+    "id": 3,
+    "question": "Quais elementos de gamificação foram utilizados no estudo?",
+    "relevant_chunks": [],
+    "source": "gamification"
+  },
+  {
+    "id": 4,
+    "question": "Quais métodos foram utilizados no reconhecimento de emoções?",
+    "relevant_chunks": [],
+    "source": "emotion_recognition"
+  },
+  {
+    "id": 5,
+    "question": "Quais bases de dados foram utilizadas no reconhecimento de emoções?",
+    "relevant_chunks": [],
+    "source": "emotion_recognition"
+  },
+  {
+    "id": 6,
+    "question": "Quais arquiteturas de aprendizado de máquina foram avaliadas?",
+    "relevant_chunks": [],
+    "source": "emotion_recognition"
+  },
+  {
+    "id": 7,
+    "question": "Qual foi o custo financeiro exato do treinamento do modelo?",
+    "relevant_chunks": [],
+    "source": "emotion_recognition"
+  },
+  {
+    "id": 8,
+    "question": "Compare os objetivos dos dois artigos.",
+    "relevant_chunks": [],
+    "source": "both"
+  }
+]

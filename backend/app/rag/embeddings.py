@@ -1,11 +1,14 @@
+
 from sentence_transformers import SentenceTransformer
 
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+MODEL_NAME = (
+    "sentence-transformers/"
+    "paraphrase-multilingual-MiniLM-L12-v2"
+)
 
 
 class EmbeddingModel:
-
     def __init__(self):
         self.model = SentenceTransformer(MODEL_NAME)
 

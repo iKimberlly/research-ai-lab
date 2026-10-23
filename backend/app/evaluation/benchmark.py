@@ -1,277 +1,354 @@
+
 import csv
 import json
 from pathlib import Path
 
-from app.rag.retriever import Retriever
+from app.rag.embeddings import EmbeddingModel
 from app.rag.vector_store import VectorStore
 
-from app.evaluation.metrics import (
-    precision_at_k,
-    recall_at_k,
-    reciprocal_rank
-)
+
+# ============================================================
+# CAMINHOS
+# ============================================================
+
+BACKEND_DIR = Path(__file__).resolve().parents[2]
+
+EVALUATION_DIR = BACKEND_DIR / "data" / "evaluation"
+
+QUESTIONS_PATH = EVALUATION_DIR / "questions.json"
+RESULTS_PATH = EVALUATION_DIR / "benchmark_results.csv"
+SUMMARY_PATH = EVALUATION_DIR / "benchmark_summary.csv"
 
 
 # ============================================================
-# DIRETÓRIOS
+# MAPEAMENTO DAS FONTES
+# Os nomes devem corresponder ao metadata "filename"
+# armazenado no ChromaDB.
 # ============================================================
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-
-QUESTIONS_PATH = (
-    BASE_DIR
-    / "data"
-    / "evaluation"
-    / "questions.json"
-)
-
-RESULTS_DIR = (
-    BASE_DIR
-    / "data"
-    / "evaluation"
-)
-
-RESULTS_PATH = (
-    RESULTS_DIR
-    / "benchmark_results.csv"
-)
-
+SOURCE_FILENAMES = {
+    "gamification": (
+        "eebf069750484af5975b84ba734ef0ac_The effects of gamifcation os student_s emotions.pdf"
+    ),
+    "emotion_recognition": (
+        "Reconhecimento+de+Emoções+como+ferramenta+de+apoio+às+terapias+personalizadas.pdf"
+    ),
+}
 
 # ============================================================
-# CARREGAR PERGUNTAS
+# CARREGAMENTO
 # ============================================================
 
 def load_questions():
-
-    with open(
-        QUESTIONS_PATH,
-        "r",
-        encoding="utf-8"
-    ) as file:
-
-        return json.load(file)
-
-
-# ============================================================
-# SALVAR CSV
-# ============================================================
-
-def save_results_csv(results):
-
-    RESULTS_DIR.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    fieldnames = [
-        "id",
-        "question",
-        "top_k",
-        "retrieved_chunks",
-        "relevant_chunks",
-        "distances",
-        "precision_at_k",
-        "recall_at_k",
-        "mrr"
-    ]
-
-    with open(
-        RESULTS_PATH,
-        "w",
-        newline="",
-        encoding="utf-8"
-    ) as file:
-
-        writer = csv.DictWriter(
-            file,
-            fieldnames=fieldnames
+    if not QUESTIONS_PATH.exists():
+        raise FileNotFoundError(
+            f"Arquivo de perguntas não encontrado: {QUESTIONS_PATH}"
         )
 
-        writer.writeheader()
+    with QUESTIONS_PATH.open("r", encoding="utf-8") as file:
+        questions = json.load(file)
 
-        for result in results:
+    if not isinstance(questions, list):
+        raise ValueError("questions.json deve conter uma lista.")
 
-            writer.writerow({
-                "id": result["id"],
-                "question": result["question"],
-                "top_k": result["top_k"],
-                "retrieved_chunks": str(
-                    result["retrieved_chunks"]
-                ),
-                "relevant_chunks": str(
-                    result["relevant_chunks"]
-                ),
-                "distances": str(
-                    result["distances"]
-                ),
-                "precision_at_k":
-                    result["precision_at_k"],
-                "recall_at_k":
-                    result["recall_at_k"],
-                "mrr":
-                    result["mrr"]
-            })
+    return questions
 
-    print(
-        f"\nCSV salvo em:\n{RESULTS_PATH}"
+
+def source_alias(filename):
+    for alias, expected_filename in SOURCE_FILENAMES.items():
+        if filename == expected_filename:
+            return alias
+
+    return filename
+
+
+def chunk_key(filename, chunk_index):
+    """Identifica um chunk pelo documento e pelo índice."""
+    return (filename, int(chunk_index))
+
+
+# ============================================================
+# BUSCA
+# ============================================================
+
+def search_documents(
+    question,
+    vector_store,
+    embedding_model,
+    top_k=3,
+    source="both",
+    use_source_filter=True,
+):
+    query_embedding = embedding_model.encode([question])[0]
+
+    query_args = {
+        "query_embeddings": [query_embedding.tolist()],
+        "n_results": top_k,
+        "include": ["documents", "metadatas", "distances"],
+    }
+
+    if use_source_filter and source != "both":
+        if source not in SOURCE_FILENAMES:
+            raise ValueError(f"Fonte desconhecida: {source}")
+
+        query_args["where"] = {
+            "filename": SOURCE_FILENAMES[source]
+        }
+
+    results = vector_store.collection.query(**query_args)
+
+    documents = results["documents"][0]
+    metadatas = results["metadatas"][0]
+    distances = results["distances"][0]
+
+    retrieved = []
+
+    for document, metadata, distance in zip(
+        documents, metadatas, distances
+    ):
+        filename = metadata["filename"]
+        chunk_index = int(metadata["chunk_index"])
+
+        retrieved.append({
+            "filename": filename,
+            "source": source_alias(filename),
+            "chunk_index": chunk_index,
+            "key": chunk_key(filename, chunk_index),
+            "distance": float(distance),
+            "text": document,
+        })
+
+    return retrieved
+
+
+# ============================================================
+# MÉTRICAS
+# ============================================================
+
+def calculate_metrics(retrieved, relevant_chunks, k):
+    """
+    relevant_chunks deve conter objetos:
+    {"source": "gamification", "chunk_index": 5}
+    """
+
+    relevant_keys = set()
+
+    for item in relevant_chunks:
+        if isinstance(item, dict):
+            source = item.get("source")
+            index = item.get("chunk_index")
+
+            if source not in SOURCE_FILENAMES:
+                continue
+
+            relevant_keys.add(
+                chunk_key(SOURCE_FILENAMES[source], index)
+            )
+
+    retrieved_keys = [item["key"] for item in retrieved[:k]]
+
+    # Não calcula métricas de relevância sem ground truth.
+    if not relevant_keys:
+        return {
+            "precision_at_k": None,
+            "recall_at_k": None,
+            "mrr": None,
+        }
+
+    relevant_retrieved = sum(
+        key in relevant_keys for key in retrieved_keys
     )
+
+    precision = relevant_retrieved / k if k else 0.0
+    recall = relevant_retrieved / len(relevant_keys)
+
+    mrr = 0.0
+
+    for rank, key in enumerate(retrieved_keys, start=1):
+        if key in relevant_keys:
+            mrr = 1 / rank
+            break
+
+    return {
+        "precision_at_k": precision,
+        "recall_at_k": recall,
+        "mrr": mrr,
+    }
 
 
 # ============================================================
 # BENCHMARK
 # ============================================================
 
-def run_benchmark(top_k: int = 3):
-
-    vector_store = VectorStore()
-
-    print(
-        f"\nDocumentos no ChromaDB: "
-        f"{vector_store.collection.count()}"
+def run_benchmark(top_k=3, use_source_filter=True):
+    vector_store = VectorStore(
+        persist_directory="data/chroma_multilingual",
+        collection_name="research_documents_multilingual",
     )
+    embedding_model = EmbeddingModel()
 
-    retriever = Retriever(
-        vector_store
-    )
+    print(f"Chunks na coleção: {vector_store.collection.count()}")
+    print(f"Filtro de fontes: {'ATIVADO' if use_source_filter else 'DESATIVADO'}")
+    print(f"Top K: {top_k}")
 
     questions = load_questions()
-
     results = []
 
     for item in questions:
-
         question = item["question"]
+        source = item.get("source", "both")
 
         print("\n" + "=" * 70)
-        print(
-            f"PERGUNTA: {question}"
+        print(f"Pergunta: {question}")
+        print(f"Fonte esperada: {source}")
+
+        retrieved = search_documents(
+            question=question,
+            vector_store=vector_store,
+            embedding_model=embedding_model,
+            top_k=top_k,
+            source=source,
+            use_source_filter=use_source_filter,
         )
-        print("=" * 70)
 
-        search_results = retriever.search(
-            query=question,
-            top_k=top_k
+        metrics = calculate_metrics(
+            retrieved=retrieved,
+            relevant_chunks=item.get("relevant_chunks", []),
+            k=top_k,
         )
 
-        metadatas = search_results.get(
-            "metadatas",
-            [[]]
-        )[0]
-
-        distances = search_results.get(
-            "distances",
-            [[]]
-        )[0]
-
-        retrieved_chunks = [
-            metadata["chunk_index"]
-            for metadata in metadatas
-        ]
-
-        relevant_chunks = set(
-            item.get(
-                "relevant_chunks",
-                []
+        for rank, result in enumerate(retrieved, start=1):
+            print(
+                f"{rank}. {result['filename']} | "
+                f"chunk={result['chunk_index']} | "
+                f"distância={result['distance']:.4f}"
             )
-        )
 
-        precision = precision_at_k(
-            retrieved_chunks,
-            relevant_chunks,
-            top_k
-        )
-
-        recall = recall_at_k(
-            retrieved_chunks,
-            relevant_chunks,
-            top_k
-        )
-
-        mrr = reciprocal_rank(
-            retrieved_chunks,
-            relevant_chunks
-        )
-
-        print(
-            f"Resultados encontrados: "
-            f"{len(metadatas)}"
-        )
-
-        print(
-            f"Chunks recuperados: "
-            f"{retrieved_chunks}"
-        )
-
-        print(
-            f"Chunks relevantes: "
-            f"{sorted(relevant_chunks)}"
-        )
-
-        print(
-            f"Precision@{top_k}: "
-            f"{precision:.3f}"
-        )
-
-        print(
-            f"Recall@{top_k}: "
-            f"{recall:.3f}"
-        )
-
-        print(
-            f"MRR: "
-            f"{mrr:.3f}"
-        )
+        print(f"Precision@{top_k}: {metrics['precision_at_k']}")
+        print(f"Recall@{top_k}: {metrics['recall_at_k']}")
+        print(f"MRR: {metrics['mrr']}")
 
         results.append({
-
             "id": item["id"],
-
             "question": question,
-
+            "expected_source": source,
+            "filter_enabled": use_source_filter,
             "top_k": top_k,
-
-            "retrieved_chunks":
-                retrieved_chunks,
-
-            "distances":
-                distances,
-
-            "relevant_chunks":
-                list(relevant_chunks),
-
-            "precision_at_k":
-                precision,
-
-            "recall_at_k":
-                recall,
-
-            "mrr":
-                mrr
+            "retrieved_chunks": json.dumps(
+                [
+                    {
+                        "source": r["source"],
+                        "filename": r["filename"],
+                        "chunk_index": r["chunk_index"],
+                    }
+                    for r in retrieved
+                ],
+                ensure_ascii=False,
+            ),
+            "distances": json.dumps(
+                [round(r["distance"], 4) for r in retrieved]
+            ),
+            "relevant_chunks": json.dumps(
+                item.get("relevant_chunks", []),
+                ensure_ascii=False,
+            ),
+            **metrics,
         })
 
     return results
 
 
 # ============================================================
-# EXECUÇÃO
+# SALVAR RESULTADOS
 # ============================================================
 
+def save_results(results, path=RESULTS_PATH):
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    if not results:
+        print("Nenhum resultado para salvar.")
+        return
+
+    with path.open("w", newline="", encoding="utf-8-sig") as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=list(results[0].keys()),
+        )
+        writer.writeheader()
+        writer.writerows(results)
+
+    print(f"\nResultados salvos em: {path}")
+
+
+def save_summary(results):
+    metric_names = [
+        "precision_at_k",
+        "recall_at_k",
+        "mrr",
+    ]
+
+    summary = []
+
+    for filter_enabled in (True, False):
+        group = [
+            row for row in results
+            if row["filter_enabled"] == filter_enabled
+        ]
+
+        for metric in metric_names:
+            values = [
+                row[metric] for row in group
+                if row[metric] is not None
+            ]
+
+            summary.append({
+                "filter_enabled": filter_enabled,
+                "metric": metric,
+                "mean": (
+                    sum(values) / len(values)
+                    if values else None
+                ),
+                "questions_evaluated": len(values),
+                "questions_without_ground_truth": (
+                    len(group) - len(values)
+                ),
+            })
+
+    SUMMARY_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    with SUMMARY_PATH.open(
+        "w", newline="", encoding="utf-8-sig"
+    ) as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=[
+                "filter_enabled",
+                "metric",
+                "mean",
+                "questions_evaluated",
+                "questions_without_ground_truth",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(summary)
+
+    print(f"Resumo salvo em: {SUMMARY_PATH}")
+
+
 if __name__ == "__main__":
-
-    results = run_benchmark(
-        top_k=3
+    filtered_results = run_benchmark(
+        top_k=3,
+        use_source_filter=True,
     )
 
-    save_results_csv(
-        results
+    unfiltered_results = run_benchmark(
+        top_k=3,
+        use_source_filter=False,
     )
 
-    print("\n")
-    print("=" * 70)
-    print("BENCHMARK FINALIZADO")
-    print("=" * 70)
+    all_results = filtered_results + unfiltered_results
 
-    print(
-        f"\nTotal de perguntas: "
-        f"{len(results)}"
-    )
+    save_results(all_results)
+    save_summary(all_results)
+
+    print("\nBenchmark concluído.")

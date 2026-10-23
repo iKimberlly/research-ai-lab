@@ -3,14 +3,17 @@ import chromadb
 
 
 class VectorStore:
-
-    def __init__(self, persist_directory="data/chroma"):
+    def __init__(
+        self,
+        persist_directory="data/chroma",
+        collection_name="research_documents"
+    ):
         self.client = chromadb.PersistentClient(
             path=persist_directory
         )
 
         self.collection = self.client.get_or_create_collection(
-            name="research_documents"
+            name=collection_name
         )
 
     def add_documents(

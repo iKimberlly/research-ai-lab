@@ -1,0 +1,7 @@
+﻿filter_enabled,metric,mean,questions_evaluated,questions_without_ground_truth
+True,precision_at_k,,0,8
+True,recall_at_k,,0,8
+True,mrr,,0,8
+False,precision_at_k,,0,8
+False,recall_at_k,,0,8
+False,mrr,,0,8
